@@ -100,7 +100,7 @@ public class UnitMove : MonoBehaviour {
                 rl = Mathf.Sqrt(rx * rx + ry * ry);
                 //固定スピードを求める
                 rate = speed / rl;
-                sx = rx * rate; sy = ry * rate;
+                sx = -(rx * rate); sy = -(ry * rate);
             }
             while(this.transform.position != lineRenderer.GetPosition(i))
             {
