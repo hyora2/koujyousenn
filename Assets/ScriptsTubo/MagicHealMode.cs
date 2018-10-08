@@ -5,11 +5,12 @@ using UnityEngine;
 public class MagicHealMode : MonoBehaviour {
 
 	public bool healing { get; set; } //現在回復モードならtrue
-	public int healcount{ get ; set; } //回復したユニットの数
 
+	private bool canheal;//回復可能かどうか
+	private CircleCollider2D circle; //モード切り替え時に回復処理を正しく行わせるため
+	private int healcount; //回復したユニットの数
 	private bool healingcheck; //ユニットが範囲内に入ったかどうかチェック
-	private bool canheal; //回復可能かどうか
-	private GameObject[] healunit = new GameObject[20]; //回復するユニットのチェック
+	private GameObject[] healunit; //回復するユニットのチェック
 	private float waittime;
 
 	// Use this for initialization
@@ -17,29 +18,46 @@ public class MagicHealMode : MonoBehaviour {
 		healing = false;
 		healcount = 0;
 		healingcheck = false;
-		canheal = true;
+		canheal = false;
 		waittime = 2.0f;
+
+		int unitnum = 20; //ユニットの数(各々所持できるユニットは20以内)
+		healunit = new GameObject[unitnum];
+
+		circle = gameObject.GetComponent<CircleCollider2D>();
+		circle.enabled = false;
+		circle.radius = 0f; //半径の大きさを変更している理由は下記参照
 	}
+
+	//circle.radiusについて
+    //circleコライダーをenabledで消したり付けたりを切り替えると、正しく回復判定・処理がされなかったため半径の大きさで再度判定できるようにした
 	
 	// Update is called once per frame
 	void Update () {
-		/*
-		if (healing == true && healcount > 0)
-		{
-			healing = false;
-			Invoke("Heal", 2f);
-		}
-		*/
-		//Debug.Log(canheal);
+
 	}
 
 	private void FixedUpdate()
 	{
+		if (healing == false)
+		{
+			healCancel();
+		}
+
 		if (healingcheck == true && canheal == true)
         {
             canheal = false;
             StartCoroutine("HealCheck");
         }
+
+		if (healcount > 0)
+		{
+			healingcheck = true;
+		}
+		else
+		{
+			healingcheck = false;
+		}
 	}
 
 	//回復モード移行時
@@ -47,12 +65,23 @@ public class MagicHealMode : MonoBehaviour {
 	{
 		healing = true;
 		canheal = true;
+		circle.enabled = true;
+        circle.radius = 3.0f;
+	}
+
+    //攻撃モード移行時
+	private void healCancel ()
+	{
+		canheal = false;
+
 		healingcheck = false;
 		healcount = 0;
 		for (int i = 0; i < 20; i++)
         {
-			healunit[i] = null;
+            healunit[i] = null;
         }
+		circle.enabled = false;
+		circle.radius = 0f;
 	}
 
     //回復継続時
@@ -75,7 +104,6 @@ public class MagicHealMode : MonoBehaviour {
 					break;
 				}
 			}
-			healingcheck = true;
 		}
 	}
 
@@ -92,11 +120,6 @@ public class MagicHealMode : MonoBehaviour {
 					break;
 				}
 			}
-		}
-
-		if (healcount <= 0)
-		{
-			healingcheck = false;
 		}
 	}
 

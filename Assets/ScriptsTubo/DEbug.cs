@@ -4,16 +4,15 @@ using UnityEngine;
 
 public class DEbug : MonoBehaviour {
 
-	private UnitStatus status;
+	//private UnitStatus status;
 
 	// Use this for initialization
 	void Start () {
-		status = gameObject.GetComponent<UnitStatus>();
+		//status = gameObject.GetComponent<UnitStatus>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		//
-		Debug.Log(status.unitHp);
+		//Debug.Log(status.unitHp);
 	}
 }
