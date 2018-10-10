@@ -14,6 +14,7 @@ public class MagicModeChange : MonoBehaviour {
 		attacking = true;
 		attackMode = gameObject.GetComponent<MagicAttackMode>();
 		healMode = gameObject.GetComponent<MagicHealMode>();
+		Changed();
 	}
 	
 	// Update is called once per frame
