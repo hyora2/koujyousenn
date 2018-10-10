@@ -18,8 +18,8 @@ public class HealRenderer : MonoBehaviour {
 		lineRenderer = gameObject.GetComponent<LineRenderer>();
 		lineRenderer.startColor = Color.blue;
 		lineRenderer.endColor = Color.red;
-		lineRenderer.startWidth = 0.1f;
-		lineRenderer.endWidth = 0.1f;
+		lineRenderer.startWidth = 0.05f;
+		lineRenderer.endWidth = 0.05f;
 		lineRenderer.positionCount = size;
         
 		healMode = gameObject.GetComponent<MagicHealMode>();
