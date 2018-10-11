@@ -12,6 +12,7 @@ public class MagicHealMode : MonoBehaviour {
 	private bool healingcheck; //ユニットが範囲内に入ったかどうかチェック
 	private GameObject[] healunit; //回復するユニットのチェック
 	private float waittime;
+	private UnitStatus magicUnitStatus;
 
 	// Use this for initialization
 	void Start () {
@@ -20,6 +21,7 @@ public class MagicHealMode : MonoBehaviour {
 		healingcheck = false;
 		canheal = false;
 		waittime = 2.0f;
+		magicUnitStatus = gameObject.GetComponent<UnitStatus>();
 
 		int unitnum = 20; //ユニットの数(各々所持できるユニットは20以内)
 		healunit = new GameObject[unitnum];
@@ -93,33 +95,73 @@ public class MagicHealMode : MonoBehaviour {
 
 	private void OnTriggerEnter2D(Collider2D collision)
 	{
-		if (collision.gameObject.tag == "Unit")
+		if (magicUnitStatus.unitCheck == true)
 		{
-			healcount++;
-			for (int i = 0; i < 20; i++)
+			UnitStatus unitStatus = collision.gameObject.GetComponent<UnitStatus>();
+			if (collision.gameObject.tag == "Unit" && unitStatus.unitCheck == true)
 			{
-				if (healunit[i] == null)
+				healcount++;
+				for (int i = 0; i < 20; i++)
 				{
-					healunit[i] = collision.gameObject;
-					break;
+					if (healunit[i] == null)
+					{
+						healunit[i] = collision.gameObject;
+						break;
+					}
 				}
 			}
+		}
+		else
+		{
+			UnitStatus unitStatus = collision.gameObject.GetComponent<UnitStatus>();
+			if (collision.gameObject.tag == "Unit" && unitStatus.unitCheck == false)
+            {
+                healcount++;
+                for (int i = 0; i < 20; i++)
+                {
+                    if (healunit[i] == null)
+                    {
+                        healunit[i] = collision.gameObject;
+                        break;
+                    }
+                }
+            }
 		}
 	}
 
 	private void OnTriggerExit2D(Collider2D collision)
 	{
-		if (collision.gameObject.tag == "Unit")
+		if (magicUnitStatus.unitCheck == true)
 		{
-			healcount--;
-			for (int i = 0; i < 20; i++)
+			UnitStatus unitStatus = collision.gameObject.GetComponent<UnitStatus>();
+			if (collision.gameObject.tag == "Unit" && unitStatus.unitCheck == true)
 			{
-				if (healunit[i] == collision.gameObject)
+				healcount--;
+				for (int i = 0; i < 20; i++)
 				{
-					healunit[i] = null;
-					break;
+					if (healunit[i] == collision.gameObject)
+					{
+						healunit[i] = null;
+						break;
+					}
 				}
 			}
+		}
+		else
+		{
+			UnitStatus unitStatus = collision.gameObject.GetComponent<UnitStatus>();
+			if (collision.gameObject.tag == "Unit" && unitStatus.unitCheck == false)
+            {
+                healcount--;
+                for (int i = 0; i < 20; i++)
+                {
+                    if (healunit[i] == collision.gameObject)
+                    {
+                        healunit[i] = null;
+                        break;
+                    }
+                }
+            }
 		}
 	}
 

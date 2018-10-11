@@ -30,7 +30,6 @@ GameObject:
   - component: {fileID: 61102653373405332}
   - component: {fileID: 114098987229453074}
   - component: {fileID: 120418995068338704}
-  - component: {fileID: 114793644616047180}
   m_Layer: 0
   m_Name: MagicUnit
   m_TagString: Untagged
@@ -49,7 +48,7 @@ GameObject:
   m_Layer: 0
   m_Name: BulletPosition
   m_TagString: Untagged
-  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -245,19 +244,6 @@ MonoBehaviour:
   magichealingpower: 5
   speed: 20
   playerunit: 1
---- !u!114 &114793644616047180
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1573110661929982}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 25b9570644e0c49b9973be59d1f18787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Enabled: 1
-  _target: {fileID: 0}
 --- !u!120 &120418995068338704
 LineRenderer:
   m_ObjectHideFlags: 1
