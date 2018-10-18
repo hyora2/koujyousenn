@@ -11,8 +11,8 @@ public class UnitStatus : MonoBehaviour {
 	public bool unitCheck { get { return playerunit; } set { playerunit = value; } }
 
     [SerializeField] private float range = 0.5f;
-	[SerializeField] private int hp = 100; //ユニットのHP
-    [SerializeField] private int power = 5; //ユニットの攻撃力
+	[SerializeField] private int hp; //ユニットのHP
+    [SerializeField] private int power; //ユニットの攻撃力
 	[SerializeField] private int magichealingpower; //魔法兵の回復力　魔法兵以外は値を0にする
 	[SerializeField] private float speed; //ユニットの移動速度
 	[SerializeField] private bool playerunit; //プレイヤーのユニットならtrue、敵のユニットならfalse
