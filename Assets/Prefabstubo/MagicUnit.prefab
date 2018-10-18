@@ -239,11 +239,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11f3798acf9c94059b2b18ab97561622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 30
-  power: 10
-  magichealingpower: 5
-  speed: 20
-  playerunit: 1
+  unitHp: 30
+  unitPower: 10
+  unitHealingpower: 5
+  unitspeed: 0
+  unitCheck: 0
 --- !u!120 &120418995068338704
 LineRenderer:
   m_ObjectHideFlags: 1

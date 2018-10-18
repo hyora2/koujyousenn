@@ -15,7 +15,7 @@ public class HealRenderer : MonoBehaviour {
 		size = (int)((2.0 * Mathf.PI) / theta_scale);
 		size++;
 
-		lineRenderer = gameObject.GetComponent<LineRenderer>();
+		lineRenderer = GetComponent<LineRenderer>();
 		lineRenderer.startColor = Color.blue;
 		lineRenderer.endColor = Color.red;
 		lineRenderer.startWidth = 0.05f;
