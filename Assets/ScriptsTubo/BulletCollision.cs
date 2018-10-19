@@ -17,7 +17,7 @@ public class BulletCollision : MonoBehaviour {
 		
 	}
 
-	private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionEnter2D(Collision2D collision)
 	{
         //中立拠点に当たったら
 		if (collision.gameObject.tag == "NeutralBase")
