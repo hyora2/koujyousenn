@@ -143,12 +143,17 @@ public class UnitMove_sin : MonoBehaviour {
     private void pivot() {
         if (Input.GetMouseButton(1))
         {//向きの変更
+            Vector3 aTapPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Collider2D aCollider2d = Physics2D.OverlapPoint(aTapPoint);
+
+            if (aCollider2d)
+            {
 
 
-            sa = Input.mousePosition.x - transform.position.x;//fmouseposition.x;
+                sa = Input.mousePosition.x - transform.position.x;//fmouseposition.x;
                 unit.transform.rotation = Quaternion.Euler(0, 0, sa * rotctl);
-               // fmouseposition = Input.mousePosition;
-            
+                // fmouseposition = Input.mousePosition;
+            }
         }
          if (Input.GetMouseButtonUp(1))
         {
