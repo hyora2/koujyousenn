@@ -42,6 +42,8 @@ public class UnitMove_sin : MonoBehaviour {
 
     int listcount=0;
 
+    bool touchcollider = false;
+
     private List<Vector3> mousePosList;
 
     float sa;//x軸のポジションの差を図る
@@ -141,22 +143,30 @@ public class UnitMove_sin : MonoBehaviour {
 
     }
     private void pivot() {
-        if (Input.GetMouseButton(1))
-        {//向きの変更
+      
+        if (Input.GetMouseButtonDown(1)) {
             Vector3 aTapPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Collider2D aCollider2d = Physics2D.OverlapPoint(aTapPoint);
 
-            if (aCollider2d)
+            if (aCollider2d) {
+                touchcollider = true;
+
+            }
+        }
+        if (Input.GetMouseButton(1))
+        {//向きの変更
+
+            if (touchcollider == true)
             {
-
-
                 sa = Input.mousePosition.x - transform.position.x;//fmouseposition.x;
                 unit.transform.rotation = Quaternion.Euler(0, 0, sa * rotctl);
                 // fmouseposition = Input.mousePosition;
             }
+            
         }
          if (Input.GetMouseButtonUp(1))
         {
+            touchcollider = false;
             return;
         }
 
