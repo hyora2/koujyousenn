@@ -19,7 +19,7 @@ public class UnitMove : MonoBehaviour {
     Vector2 fmouseposition;//前のマウスのポジション
     Vector2 pastpoint;
     bool leftup=false;//左ボタンを離したか
-    public float linespan=0.1f;
+    public float linespan=3f;
     Vector2 plusvec;
     
      
@@ -34,7 +34,7 @@ public class UnitMove : MonoBehaviour {
         plusvec = new Vector2(linespan, linespan);
         px = transform.position.x;
         py = transform.position.y;
-        lineRenderer.positionCount = 0;
+        lineRenderer.positionCount = 1;
         lineRenderer.SetPosition(0, transform.position);
         Vector2 fmouseposition = transform.position;
 
@@ -52,10 +52,13 @@ public class UnitMove : MonoBehaviour {
                 leftup = false;
             }
         }
+        
       
     }
     private void OnMouseDrag()
     {
+
+        Debug.Log("Drag");
         Vector2 currentScreenPoint = new Vector2(Input.mousePosition.x, Input.mousePosition.y);
         Vector2 currentPisition = Camera.main.ScreenToWorldPoint(currentScreenPoint);
 
@@ -71,25 +74,30 @@ public class UnitMove : MonoBehaviour {
         else
         {
             leftup = true;
+            double xdistance = Mathf.Abs((Input.mousePosition.x - pastpoint.x) * (Input.mousePosition.x - pastpoint.x) );
+            double ydistance = Mathf.Abs( (Input.mousePosition.y - pastpoint.y) * (Input.mousePosition.y - pastpoint.y));
+
+
+
             Vector2 pvec = pastpoint;
             //引っ張る
 
-            if ((Input.mousePosition.x - pastpoint.x) * -1 >= linespan) { plusvec.x = -linespan; }
-            else if ((Input.mousePosition.x - pastpoint.x) >= linespan) { plusvec.x = linespan; }
+            if (xdistance >= linespan&& Input.mousePosition.x < pastpoint.x) { plusvec.x = -linespan; }
+            else if (xdistance >= linespan){ plusvec.x = linespan; }
             else { plusvec.x = 0; }
-            if ((Input.mousePosition.y - pastpoint.y) * -1 >= linespan) { plusvec.y = -linespan; }
-            else if ((Input.mousePosition.y - pastpoint.y) >= linespan) { plusvec.y = linespan; }
+            if (ydistance >= linespan&& Input.mousePosition.y< pastpoint.y) { plusvec.y = -linespan; }
+            else if (ydistance >= linespan) { plusvec.y = linespan; }
             else { plusvec.y = 0; }
 
 
 
-            if (Mathf.Abs(Input.mousePosition.x - pastpoint.x) >= linespan || Mathf.Abs(Input.mousePosition.y - pastpoint.y) >= linespan)
+            if (xdistance >= linespan || ydistance >= linespan)
             {
                 arrayi++;
                 pvec += plusvec;
                 // lineRenderer.SetVertexCount(arrayi);
                 lineRenderer.positionCount = arrayi;
-                lineRenderer.SetPosition(arrayi, pvec);
+                lineRenderer.SetPosition(arrayi-1, pvec);
                 pastpoint = pvec;
             }
 
@@ -129,15 +137,15 @@ public class UnitMove : MonoBehaviour {
                 rate = speed / rl;
                 sx = -(rx * rate); sy = -(ry * rate);
             }
-            while(this.transform.position != lineRenderer.GetPosition(i))
+            /*while(this.transform.position != lineRenderer.GetPosition(i))
             {
                 moveflag = true;
                 transform.position += new Vector3(sx, sy);//移動
-            }
+            }*/
             moveflag = false;
                 
         }
-        lineRenderer.positionCount = 0;
+        lineRenderer.positionCount = 1;
         lineRenderer.SetPosition(0, transform.position);
        
         arrayi = 0;
