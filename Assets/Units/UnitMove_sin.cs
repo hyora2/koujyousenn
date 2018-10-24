@@ -148,7 +148,7 @@ public class UnitMove_sin : MonoBehaviour {
             Vector3 aTapPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Collider2D aCollider2d = Physics2D.OverlapPoint(aTapPoint);
 
-            if (aCollider2d) {
+            if (aCollider2d.gameObject==unit) {
                 touchcollider = true;
 
             }
@@ -180,7 +180,7 @@ public class UnitMove_sin : MonoBehaviour {
             Vector3 aTapPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Collider2D aCollider2d = Physics2D.OverlapPoint(aTapPoint);
 
-            if (aCollider2d)
+            if (aCollider2d.gameObject==unit)
             {
                 indexCount++;
                 lineLength.Add(Instantiate(lineObj));
