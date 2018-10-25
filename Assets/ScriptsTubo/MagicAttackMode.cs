@@ -46,14 +46,6 @@ public class MagicAttackMode : MonoBehaviour {
 		{
 			canattack = false;
 			StartCoroutine("Fire");
-           
-			//Xrot = Input.GetAxis("Mouse X");
-            /*
-			if (Input.GetMouseButton(1))
-            {
-				verRot.Rotate(0, 0, 180f * Xrot);
-            } 
-            */
 		}
 	}
 

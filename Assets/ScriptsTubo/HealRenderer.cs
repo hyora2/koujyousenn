@@ -6,7 +6,7 @@ public class HealRenderer : MonoBehaviour {
 
 	private float theta_scale;
 	private int size;
-	private LineRenderer lineRenderer;
+	public LineRenderer lineRenderer { get; set; }
 	private MagicHealMode healMode;
 
 	// Use this for initialization
@@ -21,6 +21,7 @@ public class HealRenderer : MonoBehaviour {
 		lineRenderer.startWidth = 0.05f;
 		lineRenderer.endWidth = 0.05f;
 		lineRenderer.positionCount = size;
+		lineRenderer.enabled = false;
         
 		healMode = gameObject.GetComponent<MagicHealMode>();
 	}

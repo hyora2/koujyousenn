@@ -2,12 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MagicHealMode : MonoBehaviour {
+public class MagicHealMode : MonoBehaviour
+{
 
 	public bool healing { get; set; } //現在回復モードならtrue
 
 	private bool canheal;//回復可能かどうか
-	private CircleCollider2D circle; //モード切り替え時に回復処理を正しく行わせるため
+	public CircleCollider2D circle { get; set; } //モード切り替え時に回復処理を正しく行わせるため
 	private int healcount; //回復したユニットの数
 	private bool healingcheck; //ユニットが範囲内に入ったかどうかチェック
 	private GameObject[] healunit; //回復するユニットのチェック
@@ -15,6 +16,7 @@ public class MagicHealMode : MonoBehaviour {
 	private UnitStatus magicUnitStatus;
 
 	// Use this for initialization
+
 	void Start () {
 		healing = false;
 		healcount = 0;

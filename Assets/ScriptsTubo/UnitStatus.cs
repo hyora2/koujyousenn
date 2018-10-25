@@ -16,20 +16,21 @@ public class UnitStatus : MonoBehaviour {
 	[SerializeField] private float speed; //ユニットの移動速度
 	[SerializeField] private bool playerunit; //プレイヤーのユニットならtrue、敵のユニットならfalse
 
+	private Rigidbody2D rb;
+
     // Use this for initialization
     void Start()
     {
-        
+		rb = GetComponent<Rigidbody2D>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        if (hp <= 0)
-        {
-            Destroy(gameObject);
-        }
-    }
-
-
+	// Update is called once per frame
+	void Update()
+	{
+		if (hp <= 0)
+		{
+			Destroy(gameObject);
+		}
+		Debug.Log(unitHp);
+	}
 }
