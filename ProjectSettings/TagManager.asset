@@ -8,6 +8,7 @@ TagManager:
   - Unit
   - PlayerBase
   - EnemyBase
+  - Bullet
   layers:
   - Default
   - TransparentFX
