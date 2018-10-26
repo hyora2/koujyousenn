@@ -11,6 +11,7 @@ public class enemyUnitMove : MonoBehaviour {
 	private GameObject Neutral1, Neutral2; //中立の拠点
 	private BaseStatus base1, base2; //中立の拠点が現在中立なのかどうか確認
 	private BaseManager baseManager;
+	private UnitCreateStart unitCreateStart;
 
 	// Use this for initialization
 	void Start () {
@@ -19,6 +20,7 @@ public class enemyUnitMove : MonoBehaviour {
 		base1 = Neutral1.GetComponent<BaseStatus>();
 		base2 = Neutral2.GetComponent<BaseStatus>();
 		baseManager = GameObject.Find("BaseManager").GetComponent<BaseManager>();
+		unitCreateStart = GameObject.Find("GameSystem").GetComponent<UnitCreateStart>();
 	}
 	
 	// Update is called once per frame
@@ -28,6 +30,9 @@ public class enemyUnitMove : MonoBehaviour {
 
 	private void FixedUpdate()
 	{
+
+        //向き指定→ターゲットと一定の距離になるまで移動→敵ユニットもしくは拠点攻撃
+
 		//中立の拠点を取りに行くユニットを決める
 		if (base1.neut == 0)
 		{
@@ -40,7 +45,10 @@ public class enemyUnitMove : MonoBehaviour {
         //中立の拠点がどちらもプレイヤーの拠点だった場合守りに徹する
 		else if (baseManager.playerbaseCount == 2)
 		{
-			
+			for (int i = 0; i < 10; i++)
+			{
+				unitCreateStart.Enemy[i].transform.LookAt(playerBase.transform);
+			}
 		}
 		//中立の拠点が片方プレイヤーの拠点だった場合中立の拠点を攻めていたユニットを敵の本拠地に向かわせる
 		else if (baseManager.playerbaseCount == 1 && base1.BaseHP <= 0 && base2.BaseHP <= 0)
