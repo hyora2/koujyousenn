@@ -31,6 +31,5 @@ public class UnitStatus : MonoBehaviour {
 		{
 			Destroy(gameObject);
 		}
-		Debug.Log(unitHp);
 	}
 }

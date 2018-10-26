@@ -14,11 +14,13 @@ public class BaseStatus : MonoBehaviour {
 	}
 
 	private BaseManager baseManager;
+	private UnitCreateStart unitCreateStart;
 
 	// Use this for initialization
 	void Start () {
 		neut = 0;
 		baseManager = GameObject.Find("BaseManager").GetComponent<BaseManager>();
+		unitCreateStart = GameObject.Find("GameSystem").GetComponent<UnitCreateStart>();
 	}
 	
 	// Update is called once per frame
@@ -50,10 +52,12 @@ public class BaseStatus : MonoBehaviour {
 				{
 					neut = 1;
 					baseManager.playerbaseCount++;
+					BaseP(gameObject);
 				}
 				else if (collision.gameObject.tag == "EnemyUnit")
 				{
 					neut = 2;
+					BaseE(gameObject);
 				}
 			}
 		}
@@ -68,12 +72,90 @@ public class BaseStatus : MonoBehaviour {
                 {
                     neut = 1;
 					baseManager.playerbaseCount++;
+					BaseP(gameObject);
                 }
                 else if (collision.gameObject.tag == "EnemyUnit")
                 {
                     neut = 2;
+					BaseE(gameObject);
                 }
             }
 		}
+	}
+
+	void BaseP(GameObject baseObj)
+	{
+		//生成場所決め
+		float creX = 0f; //中立拠点の右(左)の位置に配置
+		switch(BaseTag)
+		{
+			case 3:
+				creX = 1f;
+				break;
+			case 4:
+				creX = -1f;
+				break;
+			default:
+				break;
+		}
+		Vector3 crePos = new Vector3(creX, 0f, 0f);
+		int rand = Random.Range(0, 5); //どの種類のユニット生成するかを決める
+		GameObject unitCre =
+			Instantiate(unitCreateStart.EnemyKind[rand], baseObj.transform.position + crePos, Quaternion.identity) as GameObject;
+		UnitStatus unitStatus = unitCre.GetComponent<UnitStatus>();
+		unitStatus.unitCheck = true;
+
+		float creY = 1f; //中立拠点の上下の位置に配置
+		crePos = new Vector3(0f, creY, 0f);
+		rand = Random.Range(0, 5);
+		unitCre =
+            Instantiate(unitCreateStart.EnemyKind[rand], baseObj.transform.position + crePos, Quaternion.identity) as GameObject;
+        unitStatus = unitCre.GetComponent<UnitStatus>();
+        unitStatus.unitCheck = true;
+
+		crePos = new Vector3(0f, -creY, 0f);
+		rand = Random.Range(0, 5);
+		unitCre =
+            Instantiate(unitCreateStart.EnemyKind[rand], baseObj.transform.position + crePos, Quaternion.identity) as GameObject;
+        unitStatus = unitCre.GetComponent<UnitStatus>();
+        unitStatus.unitCheck = true;
+	}
+
+	void BaseE(GameObject baseObj)
+	{
+		//生成場所決め
+        float creX = 0f; //中立拠点の右(左)の位置に配置
+        switch (BaseTag)
+        {
+            case 3:
+                creX = 1f;
+                break;
+            case 4:
+                creX = -1f;
+                break;
+            default:
+                break;
+        }
+        Vector3 crePos = new Vector3(creX, 0f, 0f);
+        int rand = Random.Range(0, 5); //どの種類のユニット生成するかを決める
+        GameObject unitCre =
+            Instantiate(unitCreateStart.EnemyKind[rand], baseObj.transform.position + crePos, Quaternion.identity) as GameObject;
+        UnitStatus unitStatus = unitCre.GetComponent<UnitStatus>();
+        unitStatus.unitCheck = true;
+
+        float creY = 1f; //中立拠点の上下の位置に配置
+        crePos = new Vector3(0f, creY, 0f);
+        rand = Random.Range(0, 5);
+        unitCre =
+            Instantiate(unitCreateStart.EnemyKind[rand], baseObj.transform.position + crePos, Quaternion.identity) as GameObject;
+        unitStatus = unitCre.GetComponent<UnitStatus>();
+        unitStatus.unitCheck = true;
+
+        crePos = new Vector3(0f, -creY, 0f);
+        rand = Random.Range(0, 5);
+        unitCre =
+            Instantiate(unitCreateStart.EnemyKind[rand], baseObj.transform.position + crePos, Quaternion.identity) as GameObject;
+        unitStatus = unitCre.GetComponent<UnitStatus>();
+        unitStatus.unitCheck = true;
 	}
 }
