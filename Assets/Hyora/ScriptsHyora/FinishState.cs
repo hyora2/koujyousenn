@@ -52,6 +52,7 @@ public class FinishState : MonoBehaviour {
     public void GameEnd(int winSide){
       
         Font.SetActive(true);   //GAME SETの文字を出す。使わなければ消してください。
+        wait(3.0f);
 
         if(winSide == 0){
             //0 : プレイヤー側が勝利したときの処理。
@@ -71,6 +72,10 @@ public class FinishState : MonoBehaviour {
 
     }
 	
+
+    IEnumerator wait(float time){
+        yield return new WaitForSeconds(time);
+    }
 
 
 }
