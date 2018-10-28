@@ -126,6 +126,7 @@ GameObject:
   - component: {fileID: 237892421}
   - component: {fileID: 237892426}
   - component: {fileID: 237892422}
+  - component: {fileID: 237892427}
   m_Layer: 0
   m_Name: PlayerBase
   m_TagString: PlayerBase
@@ -246,6 +247,21 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!58 &237892427
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 237892420}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.6
 --- !u!1 &794435171
 GameObject:
   m_ObjectHideFlags: 0
@@ -259,6 +275,7 @@ GameObject:
   - component: {fileID: 794435172}
   - component: {fileID: 794435177}
   - component: {fileID: 794435173}
+  - component: {fileID: 794435178}
   m_Layer: 0
   m_Name: NeutralBase2
   m_TagString: NeutralBase
@@ -379,6 +396,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &794435178
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 794435171}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.6
 --- !u!1 &914943179
 GameObject:
   m_ObjectHideFlags: 0
@@ -509,6 +541,7 @@ GameObject:
   - component: {fileID: 1622367258}
   - component: {fileID: 1622367263}
   - component: {fileID: 1622367259}
+  - component: {fileID: 1622367264}
   m_Layer: 0
   m_Name: EnemyBase
   m_TagString: EnemyBase
@@ -629,6 +662,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &1622367264
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1622367257}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.6
 --- !u!1 &1903906276
 GameObject:
   m_ObjectHideFlags: 0
@@ -688,6 +736,7 @@ GameObject:
   - component: {fileID: 2066991510}
   - component: {fileID: 2066991515}
   - component: {fileID: 2066991511}
+  - component: {fileID: 2066991516}
   m_Layer: 0
   m_Name: NeutralBase1
   m_TagString: NeutralBase
@@ -808,3 +857,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!58 &2066991516
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2066991509}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.6

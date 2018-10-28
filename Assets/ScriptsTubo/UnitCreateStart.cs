@@ -27,8 +27,8 @@ public class UnitCreateStart : MonoBehaviour {
 			while (i < size)
 			{
 				unitPos = new Vector3(vx, vy, 0f); //生成するユニットの位置
-				Enemy[i] = Instantiate(EnemyKind[j], unitPos, Quaternion.Euler(0f, 0f, 180f)) as GameObject;
-				//Enemy[i].transform.Rotate(new Vector3(0f, 180f, 0f)); //プレイヤー側を向く
+				Enemy[i] = Instantiate(EnemyKind[j], unitPos, Quaternion.Euler(0f, 0f, 180f)) as GameObject; //プレイヤーの方を向き生成
+				Enemy[i].AddComponent<enemyUnitMove>(); //敵が移動できるようにする
 				UnitStatus unitStatus = Enemy[i].GetComponent<UnitStatus>();
 				unitStatus.unitCheck = false;
 				//Enemy[i].SetActive(false);

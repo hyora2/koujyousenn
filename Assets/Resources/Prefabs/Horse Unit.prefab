@@ -145,5 +145,5 @@ MonoBehaviour:
   hp: 10
   power: 10
   magichealingpower: 0
-  speed: 0
+  speed: 0.001
   playerunit: 0
