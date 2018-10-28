@@ -268,7 +268,7 @@ MonoBehaviour:
   hp: 30
   power: 10
   magichealingpower: 10
-  speed: 0
+  speed: 0.001
   playerunit: 0
 --- !u!120 &120418995068338704
 LineRenderer:
