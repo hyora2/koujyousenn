@@ -129,10 +129,10 @@ GameObject:
   - component: {fileID: 237892427}
   m_Layer: 0
   m_Name: PlayerBase
-  m_TagString: PlayerBase
+  m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!114 &237892421
 MonoBehaviour:
@@ -278,10 +278,10 @@ GameObject:
   - component: {fileID: 794435178}
   m_Layer: 0
   m_Name: NeutralBase2
-  m_TagString: NeutralBase
+  m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!114 &794435172
 MonoBehaviour:
@@ -544,10 +544,10 @@ GameObject:
   - component: {fileID: 1622367264}
   m_Layer: 0
   m_Name: EnemyBase
-  m_TagString: EnemyBase
+  m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!114 &1622367258
 MonoBehaviour:
@@ -739,10 +739,10 @@ GameObject:
   - component: {fileID: 2066991516}
   m_Layer: 0
   m_Name: NeutralBase1
-  m_TagString: NeutralBase
+  m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967295
+  m_StaticEditorFlags: 0
   m_IsActive: 1
 --- !u!114 &2066991510
 MonoBehaviour:

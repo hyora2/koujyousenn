@@ -159,18 +159,9 @@ public class BaseStatus : MonoBehaviour {
         unitStatus.unitCheck = true;
 	}
 
-	private void OnTriggerEnter2D(Collider2D collision)
+	public void damage(int dam)
 	{
-		if (collision.gameObject.tag == "Unit")
-		{
-			UnitStatus status = collision.GetComponent<UnitStatus>();
-            //敵ユニットが範囲内に入ったら移動を止める
-			if (status.unitCheck == false)
-			{
-				enemyUnitMove unitMove = collision.GetComponent<enemyUnitMove>();
-				unitMove.canMove = false;
-			}
-		}
+		BaseHP -= dam;
 	}
 
 }

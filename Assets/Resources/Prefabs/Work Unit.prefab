@@ -24,6 +24,7 @@ GameObject:
   - component: {fileID: 50907354532969330}
   - component: {fileID: 61440666837118392}
   - component: {fileID: 114048735132657730}
+  - component: {fileID: 114165750637422360}
   m_Layer: 0
   m_Name: Work Unit
   m_TagString: Untagged
@@ -147,3 +148,15 @@ MonoBehaviour:
   magichealingpower: 0
   speed: 0.001
   playerunit: 0
+--- !u!114 &114165750637422360
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1624249828218442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 154f4e6c0f27e4f15829503f7fdc1e9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 0.5
