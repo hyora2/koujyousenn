@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MagicModeChange : MonoBehaviour {
 
-	public bool attacking { get; private set; } //攻撃モードならtrue、回復モードならfalse
+	public bool attacking { get; set; } //攻撃モードならtrue、回復モードならfalse
 
 	private MagicAttackMode attackMode;
 	private MagicHealMode healMode;
