@@ -4,9 +4,18 @@
 TagManager:
   serializedVersion: 2
   tags:
+<<<<<<< HEAD
   - C_Mode
   - A_Mode
   - Wizard
+=======
+  - NeutralBase
+  - Unit
+  - PlayerBase
+  - EnemyBase
+  - Bullet
+  - Base
+>>>>>>> d026cebb7c66cfac613fd54d78432f8b4ed6c112
   layers:
   - Default
   - TransparentFX
