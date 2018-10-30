@@ -36,6 +36,7 @@ public class MagicModeChange : MonoBehaviour {
 			healMode.healing = false;
 			Changed();
 		}
+		Debug.Log(attacking);
 	}
 
 	private void Changed()

@@ -31,8 +31,6 @@ public class UnitCreateStart : MonoBehaviour {
 				Enemy[i].AddComponent<enemyUnitMove>(); //敵が移動できるようにする
 				UnitStatus unitStatus = Enemy[i].GetComponent<UnitStatus>();
 				unitStatus.unitCheck = false;
-				//Enemy[i].SetActive(false);
-				//Enemy[i].SetActive(true);
 
                 if (size == 10)
 				{

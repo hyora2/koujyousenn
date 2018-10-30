@@ -4,32 +4,34 @@ using UnityEngine;
 
 public class UnitStatus : MonoBehaviour {
 
-	public int unitHp { get { return hp; } set { hp = value; }}
-	public int unitPower { get { return power; } set { power = value; } }
-	public int unitHealingpower { get { return magichealingpower; } set { magichealingpower = value; } }
-	public float unitspeed { get { return speed; } set { speed = value; } }
-	public bool unitCheck { get { return playerunit; } set { playerunit = value; } }
+	public int unitHp; //ユニットのHP
+	public int unitPower; //ユニットの攻撃力
+	public int unitHealingpower; //魔法兵の回復力　魔法兵以外は値を0にする
+	public float unitspeed; //ユニットの移動速度
+	public bool unitCheck; //プレイヤーのユニットならtrue、敵のユニットならfalse
 
-	[SerializeField] private int hp; //ユニットのHP
-    [SerializeField] private int power; //ユニットの攻撃力
-	[SerializeField] private int magichealingpower; //魔法兵の回復力　魔法兵以外は値を0にする
-	[SerializeField] private float speed; //ユニットの移動速度
-	[SerializeField] private bool playerunit; //プレイヤーのユニットならtrue、敵のユニットならfalse
+	public int getscore; //倒した場合得られるスコア(敵の場合のみ)
 
 	private Rigidbody2D rb;
+	private PointCont point;
 
     // Use this for initialization
     void Start()
     {
 		rb = GetComponent<Rigidbody2D>();
+		point = GameObject.Find("GameSystem").GetComponent<PointCont>();
     }
 
 	// Update is called once per frame
 	void Update()
 	{
-		if (hp <= 0)
+		if (unitHp <= 0)
 		{
 			Destroy(gameObject);
+			if (unitCheck == false)
+			{
+				point.PGet(getscore);
+			}
 		}
 	}
 }
