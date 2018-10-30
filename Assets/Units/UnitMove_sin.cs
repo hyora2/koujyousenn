@@ -26,6 +26,7 @@ public class UnitMove_sin : MonoBehaviour {
     private int indexCount;
 
     private bool drawing;
+    bool drow_now=false;
 
     
 
@@ -34,6 +35,8 @@ public class UnitMove_sin : MonoBehaviour {
     Vector2 fmouseposition;//前のマウスのポジション
 
     public GameObject unit;
+    public GameObject ui_unit;
+    public GameObject arrow;
 
     bool delete;
 
@@ -66,6 +69,10 @@ public class UnitMove_sin : MonoBehaviour {
     public float speed = 5;
 
     float deftimemove;
+
+    float dragtime = 1f;//右ドラッグ時間
+
+   
 
 
 
@@ -126,7 +133,8 @@ public class UnitMove_sin : MonoBehaviour {
         }
         Move();
         
-        if(listcount==mousePosList.Count||delete==true){
+        if(drow_now==false&&listcount==mousePosList.Count||delete==true){
+            //ここでdrow_nowの判定をしないとlistcountが増えない。
             goal = true;
             moving = false;
             if (indexCount >= 0)
@@ -155,8 +163,9 @@ public class UnitMove_sin : MonoBehaviour {
         }
         if (Input.GetMouseButton(1))
         {//向きの変更
-
-            if (touchcollider == true)
+            
+            dragtime -= Time.deltaTime;
+            if (touchcollider == true&&dragtime<=0)
             {
                 sa = Input.mousePosition.x - transform.position.x;//fmouseposition.x;
                 unit.transform.rotation = Quaternion.Euler(0, 0, sa * rotctl);
@@ -167,6 +176,7 @@ public class UnitMove_sin : MonoBehaviour {
          if (Input.GetMouseButtonUp(1))
         {
             touchcollider = false;
+            dragtime = 1f;
             return;
         }
 
@@ -187,34 +197,38 @@ public class UnitMove_sin : MonoBehaviour {
                 activeLine.Add(lineLength[indexCount].GetComponent<Line>());
 
                 GameObject obj = aCollider2d.transform.gameObject;
-                //Debug.Log(obj.name);
+                //Debug.Log("obj="+obj.name);
             }
             
         }
        
         if (Input.GetMouseButton(0))
         {
+           
+            drow_now = true;
             SetLine();//
             LineLimit();
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            if (indexCount > -1 && activeLine[indexCount] != null&&linestraight == true) {
+           if (indexCount > -1 && activeLine[indexCount] != null&&linestraight == true) {
                 //直線移動の場合
+                arrow.SetActive(false);
                 Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-                float a = (mousePos.y - unit.transform.position.y) / (mousePos.x - unit.transform.position.x);//傾き
+               // float a = (mousePos.y - unit.transform.position.y) / (mousePos.x - unit.transform.position.x);//傾き
 
 
                 Vector2 direction;
-                direction.x = 0.01f * (mousePos.x - unit.transform.position.x);
-                direction.y = 0.01f* (mousePos.y - unit.transform.position.y);
-                Vector3 p = mousePos;
-                for (int i=0; i< 100; i++)
+                direction.x = 0.1f * (mousePos.x - unit.transform.position.x);
+                direction.y = 0.1f* (mousePos.y - unit.transform.position.y);
+                Vector3 p = unit.transform.position;
+                for (int i=0; i< 10; i++)
                 {   
                     mousePosList.Add(p);
                     activeLine[indexCount].LineUpdate(p);
                     p += new Vector3(direction.x, direction.y);
+                   // Debug.Log("p=" + p);
                 }
 
             }
@@ -243,6 +257,9 @@ public class UnitMove_sin : MonoBehaviour {
             else {  }
             goal = false;
             moving = true;
+            drow_now = false;
+           
+
         }
        
     }
@@ -257,14 +274,30 @@ public class UnitMove_sin : MonoBehaviour {
             activeLine[indexCount].LineUpdate(mousePos);
             //Debug.Log(mousePosList.Count);
         }
-        else if (indexCount > -1 && activeLine[indexCount] != null && linestraight == true) {
-            //ラインが直線でないとき
-           /* Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            if (activeLine[indexCount].lr.positionCount == 0){
-                activeLine[indexCount].lr.SetPosition(0, unit.transform.position);
-                activeLine[indexCount].lr.positionCount = 1;
-            }*/
-            
+      else if (indexCount > -1 && activeLine[indexCount] != null && linestraight == true) {
+            //ラインが直線のとき
+       Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            arrow.SetActive(true);
+            //向きの変更
+            var vec = (mousePos - unit.transform.position).normalized;
+            var angle = (Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg) - 90.0f;
+            arrow.transform.rotation = Quaternion.Euler(0.0f, 0.0f, angle);
+            //大きさの変更
+           /* Vector2 direction;
+            direction.x = 0.1f * (mousePos.x - unit.transform.position.x);
+            direction.y = 0.1f *(mousePos.y - unit.transform.position.y);*/
+            float distance = Vector2.Distance(mousePos, unit.transform.position);
+           arrow.transform.localScale = new Vector3(arrow.transform.localScale.x, distance,arrow.transform.localScale.z);
+
+   
+
+
+            /* Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+             if (activeLine[indexCount].lr.positionCount == 0){
+                 activeLine[indexCount].lr.SetPosition(0, unit.transform.position);
+                 activeLine[indexCount].lr.positionCount = 1;
+             }*/
+
             //activeLine[indexCount].lr.SetPosition(1, Input.mousePosition);
 
 
@@ -343,6 +376,7 @@ public class UnitMove_sin : MonoBehaviour {
                 Vector2 direction;
                 direction.x = linespan * (mousePosList[listcount].x - unit.transform.position.x);
                 direction.y = linespan * (mousePosList[listcount].y - unit.transform.position.y);
+               
                 // Debug.Log("directionx=" + direction.x+"directiony=" + direction.y);
                 // Debug.Log("mousepos=" + mousePosList[listcount]);
 
@@ -352,7 +386,7 @@ public class UnitMove_sin : MonoBehaviour {
                  unit.GetComponent<Rigidbody2D>().velocity = direction2 * speed;*/
 
 
-                unit.transform.position += new Vector3(direction.x * speed, direction.y * speed);
+                ui_unit.transform.position += new Vector3(direction.x * speed, direction.y * speed);
 
             }
             else
