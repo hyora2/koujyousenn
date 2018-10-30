@@ -13,14 +13,18 @@ public class BaseStatus : MonoBehaviour {
 		private set;
 	}
 
+	public int getpoint; //中立の拠点を獲得した際に得られるポイントの量(獲得量は２つの拠点で同じにすること)
+
 	private BaseManager baseManager;
 	private UnitCreateStart unitCreateStart;
+	private PointCont point;
 
 	// Use this for initialization
 	void Start () {
 		neut = 0;
 		baseManager = GameObject.Find("BaseManager").GetComponent<BaseManager>();
 		unitCreateStart = GameObject.Find("GameSystem").GetComponent<UnitCreateStart>();
+		point = GameObject.Find("GameSystem").GetComponent<PointCont>();
 	}
 	
 	// Update is called once per frame
@@ -52,6 +56,7 @@ public class BaseStatus : MonoBehaviour {
 				{
 					neut = 1;
 					baseManager.playerbaseCount++;
+					point.PGet(getpoint);
 					BaseP(gameObject);
 				}
 				else if (collision.gameObject.tag == "EnemyUnit")
@@ -72,6 +77,7 @@ public class BaseStatus : MonoBehaviour {
                 {
                     neut = 1;
 					baseManager.playerbaseCount++;
+					point.PGet(getpoint);
 					BaseP(gameObject);
                 }
                 else if (collision.gameObject.tag == "EnemyUnit")

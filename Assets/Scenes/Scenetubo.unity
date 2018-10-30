@@ -147,6 +147,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseHP: 100
   BaseTag: 1
+  getpoint: 0
 --- !u!50 &237892422
 Rigidbody2D:
   serializedVersion: 4
@@ -296,6 +297,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseHP: 50
   BaseTag: 4
+  getpoint: 0
 --- !u!61 &794435173
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -562,6 +564,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseHP: 100
   BaseTag: 2
+  getpoint: 0
 --- !u!61 &1622367259
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -686,6 +689,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1903906277}
   - component: {fileID: 1903906278}
+  - component: {fileID: 1903906279}
   m_Layer: 0
   m_Name: GameSystem
   m_TagString: Untagged
@@ -723,6 +727,19 @@ MonoBehaviour:
   - {fileID: 1253355093089056, guid: 3bba1806aa3f545708681fd059e53d93, type: 2}
   - {fileID: 1052983009393552, guid: 5a50ed8dfa75b4a2eac362e220424221, type: 2}
   - {fileID: 1573110661929982, guid: 56b8efd7bc27c49fdb70ed6df6b5909b, type: 2}
+--- !u!114 &1903906279
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1903906276}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4da6684e9c8254b108b297da4913a04b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Point: 0
+  Ptext: {fileID: 0}
 --- !u!1 &2066991509
 GameObject:
   m_ObjectHideFlags: 0
@@ -757,6 +774,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BaseHP: 50
   BaseTag: 3
+  getpoint: 0
 --- !u!50 &2066991511
 Rigidbody2D:
   serializedVersion: 4

@@ -152,8 +152,9 @@ public class enemyUnitMove : MonoBehaviour {
 		{
 			//rb = objects[i].GetComponent<Rigidbody2D>();
 			UnitStatus status = objects[i].GetComponent<UnitStatus>();
-			//rb.velocity = new Vector2(status.unitspeed, 0f);
+			//rb.velocity = objects[i].transform. * status.unitspeed;
 			objects[i].transform.Translate(0f, status.unitspeed, 0f);
+
 		}
 	}
 }
