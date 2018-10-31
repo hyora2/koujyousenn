@@ -160,7 +160,7 @@ GameObject:
   m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &237892421
 MonoBehaviour:
@@ -417,7 +417,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 785867494}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26c98518f4f6b475bbb9a21ab8905688, type: 3}
+  m_Script: {fileID: 11500000, guid: c7ec85c3e531c4797821381ae08bfa58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &785867497
@@ -434,7 +434,7 @@ MonoBehaviour:
   unitHp: 10
   unitPower: 10
   unitHealingpower: 10
-  unitspeed: 0.001
+  unitspeed: 0.01
   unitCheck: 0
   getscore: 0
 --- !u!114 &785867498
@@ -520,7 +520,7 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 785867494}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -608,7 +608,7 @@ GameObject:
   m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &794435172
 MonoBehaviour:
@@ -1016,7 +1016,7 @@ MonoBehaviour:
   unitHp: 10
   unitPower: 10
   unitHealingpower: 10
-  unitspeed: 10
+  unitspeed: 0.01
   unitCheck: 0
   getscore: 0
 --- !u!114 &1275013996
@@ -1102,7 +1102,7 @@ Rigidbody2D:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1275013993}
-  m_BodyType: 0
+  m_BodyType: 1
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
@@ -1179,7 +1179,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1275013993}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 26c98518f4f6b475bbb9a21ab8905688, type: 3}
+  m_Script: {fileID: 11500000, guid: c7ec85c3e531c4797821381ae08bfa58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1406249516
@@ -1229,7 +1229,7 @@ GameObject:
   m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &1622367258
 MonoBehaviour:
@@ -1491,7 +1491,7 @@ MonoBehaviour:
   unitHp: 10
   unitPower: 10
   unitHealingpower: 10
-  unitspeed: 0.001
+  unitspeed: 0.01
   unitCheck: 1
   getscore: 0
 --- !u!114 &1765426232
@@ -1725,7 +1725,7 @@ GameObject:
   m_TagString: Base
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!114 &2066991510
 MonoBehaviour:
