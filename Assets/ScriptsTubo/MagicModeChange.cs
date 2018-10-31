@@ -8,12 +8,21 @@ public class MagicModeChange : MonoBehaviour {
 
 	private MagicAttackMode attackMode;
 	private MagicHealMode healMode;
+	private ModeSwich swich;
+
+	private GameObject Root;
+    private GameObject Wmenu;
 
 	// Use this for initialization
 	void Start () {
 		attacking = true;
 		attackMode = gameObject.GetComponent<MagicAttackMode>();
 		healMode = gameObject.GetComponent<MagicHealMode>();
+
+		Root = transform.root.gameObject;
+        Wmenu = Root.transform.Find("unitmenu/W_Menu").gameObject;
+        swich = Wmenu.GetComponent<ModeSwich>();
+
 		Changed();
 	}
 	
@@ -24,16 +33,17 @@ public class MagicModeChange : MonoBehaviour {
 
 	private void FixedUpdate()
 	{
-		if (Input.GetKeyDown(KeyCode.M))
+		if (attacking == false)
 		{
-			attacking = false;
+			swich.Attack = true;
+            swich.Cure = false;
 			Changed();
-
 		}
-		else if (Input.GetKeyDown(KeyCode.N))
+		else if (attacking == true)
 		{
-			attacking = true;
 			healMode.healing = false;
+			swich.Attack = false;
+            swich.Cure = true;
 			Changed();
 		}
 		Debug.Log(attacking);
