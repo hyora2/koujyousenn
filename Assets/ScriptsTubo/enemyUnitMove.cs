@@ -7,6 +7,7 @@ public class enemyUnitMove : MonoBehaviour {
 
 	public bool canMove { get; set; } //移動できるか出来ないか 拠点の一定範囲内に入ったら動きを止める
 	public bool rotP { get; set; } //敵拠点に到着した時、プレイヤーの拠点側を向く
+	public int pinchUnit { get; set; } //体力がピンチのユニットが増えてきた場合、魔法兵が回復モードに切り替える
 
     //基地の設定
 	private GameObject playerBase; //プレイヤーの拠点
@@ -151,10 +152,9 @@ public class enemyUnitMove : MonoBehaviour {
 		for (int i = 0; i < 10; i++)
 		{
 			//rb = objects[i].GetComponent<Rigidbody2D>();
-			UnitStatus status = objects[i].GetComponent<UnitStatus>();
+			//UnitStatus status = objects[i].GetComponent<UnitStatus>();
 			//rb.velocity = objects[i].transform. * status.unitspeed;
-			objects[i].transform.Translate(0f, status.unitspeed, 0f);
-
+			//objects[i].transform.Translate(0f, status.unitspeed, 0f);
 		}
 	}
 }
