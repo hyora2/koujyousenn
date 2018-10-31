@@ -7,7 +7,7 @@ public class enemyUnitMove : MonoBehaviour {
 
 	public bool canMove { get; set; } //移動できるか出来ないか 拠点の一定範囲内に入ったら動きを止める
 	public bool rotP { get; set; } //敵拠点に到着した時、プレイヤーの拠点側を向く
-	public int pinchUnit { get; set; } //体力がピンチのユニットが増えてきた場合、魔法兵が回復モードに切り替える
+	//public int pinchUnit { get; set; } //体力がピンチのユニットが増えてきた場合、魔法兵が回復モードに切り替える
 
     //基地の設定
 	private GameObject playerBase; //プレイヤーの拠点
@@ -16,7 +16,9 @@ public class enemyUnitMove : MonoBehaviour {
 	private BaseStatus base1, base2; //中立の拠点が現在中立なのかどうか確認
 	private BaseManager baseManager;
 	private UnitCreateStart unitCreateStart;
+	private MagicModeChange magicModeChange;
 	private bool rot, rotN1, rotN2; //拠点への向き変更
+	private int modenum;
 
 	private Rigidbody2D rb;
 
@@ -38,6 +40,17 @@ public class enemyUnitMove : MonoBehaviour {
 		rotP = false;
 		rotN1 = true;
 		rotN2 = true;
+
+		modenum = 1;
+		if (gameObject.tag == "WizardUnit")
+		{
+			magicModeChange = GetComponent<MagicModeChange>();
+			StartCoroutine("modechange");
+		}
+		else
+		{
+			magicModeChange = null;
+		}
 	}
 	
 	// Update is called once per frame
@@ -51,7 +64,7 @@ public class enemyUnitMove : MonoBehaviour {
 	private void FixedUpdate()
 	{
 
-        //向き指定→ターゲットと一定の距離になるまで移動→敵ユニットもしくは拠点攻撃
+        //個々のユニット用に書き直す
 
 		//中立の拠点を取りに行くユニットを決める
 		if (base1.neut == 0)
@@ -151,10 +164,28 @@ public class enemyUnitMove : MonoBehaviour {
 	{
 		for (int i = 0; i < 10; i++)
 		{
-			//rb = objects[i].GetComponent<Rigidbody2D>();
-			//UnitStatus status = objects[i].GetComponent<UnitStatus>();
-			//rb.velocity = objects[i].transform. * status.unitspeed;
+			rb = objects[i].GetComponent<Rigidbody2D>();
+			UnitStatus status = objects[i].GetComponent<UnitStatus>();
+			rb.velocity = new Vector2(0, status.unitspeed);
 			//objects[i].transform.Translate(0f, status.unitspeed, 0f);
 		}
+	}
+
+	private IEnumerator modechange()
+	{
+		magicModeChange.Changed(modenum);
+
+		yield return new WaitForSeconds(10f);
+
+		switch(modenum)
+		{
+			case 1:
+				modenum = 2;
+				break;
+			case 2:
+				modenum = 1;
+				break;
+		}
+		StartCoroutine("modechange");
 	}
 }

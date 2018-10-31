@@ -35,11 +35,13 @@ public class ChangeMode : MonoBehaviour {
 	}
     public void ButtonPushC()
     {
-
-		modeChange.attacking = false;
-
+		//modeChange.save = true;
+		//modeChange.attacking = false;
+		modeChange.Changed(2);
     }
     public void ButtonPushA() {
-		modeChange.attacking = true;
+		//modeChange.save = true;
+		//modeChange.attacking = true;
+		modeChange.Changed(1);
     }
 }
