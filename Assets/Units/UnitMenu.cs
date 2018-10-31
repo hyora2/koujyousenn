@@ -37,7 +37,7 @@ public class UnitMenu : MonoBehaviour {
                 if (active == false)
                 {
                     u_menu.SetActive(true);
-                    if (unit.gameObject.tag == "Wizard") {
+                    if (unit.gameObject.tag == "WizardUnit") {
                         w_menu.SetActive(true);
                         
                     }
