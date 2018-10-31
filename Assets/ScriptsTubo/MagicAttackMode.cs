@@ -33,7 +33,8 @@ public class MagicAttackMode : MonoBehaviour {
 		Xrot = Input.GetAxis("Mouse X");
 		if (Input.GetMouseButton(1))
         {
-            verRot.Rotate(0, 0, 5f * Xrot);
+			if (status.unitCheck == true)
+                verRot.Rotate(0, 0, 5f * Xrot);
         }      
 	}
 
@@ -60,14 +61,14 @@ public class MagicAttackMode : MonoBehaviour {
 	{
 		//弾発射
 		GameObject Bullets = Instantiate(Bullet, bulletPos) as GameObject;
-		if (status.unitCheck == false)
-        {
-            Bullets.GetComponent<Rigidbody2D>().velocity = transform.up.normalized * -bulletSpeed;
-        }
-        else
-        {
+		//if (status.unitCheck == false)
+        //{
+            //Bullets.GetComponent<Rigidbody2D>().velocity = transform.up.normalized * -bulletSpeed;
+        //}
+        //else
+        //{
             Bullets.GetComponent<Rigidbody2D>().velocity = transform.up.normalized * bulletSpeed;
-        }
+        //}
 
 		yield return new WaitForSeconds(wait);
 
