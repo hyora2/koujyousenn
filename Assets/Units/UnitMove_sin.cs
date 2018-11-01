@@ -156,10 +156,12 @@ public class UnitMove_sin : MonoBehaviour {
             Vector3 aTapPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Collider2D aCollider2d = Physics2D.OverlapPoint(aTapPoint);
 
-            if (aCollider2d.gameObject==unit) {
+            if (aCollider2d.gameObject == unit)
+            {
                 touchcollider = true;
 
             }
+            else { return; }
         }
         if (Input.GetMouseButton(1))
         {//向きの変更
@@ -167,7 +169,7 @@ public class UnitMove_sin : MonoBehaviour {
             dragtime -= Time.deltaTime;
             if (touchcollider == true&&dragtime<=0)
             {
-                sa = Input.mousePosition.x - transform.position.x;//fmouseposition.x;
+                sa = Input.mousePosition.y - transform.position.y;//fmouseposition.x;
                 unit.transform.rotation = Quaternion.Euler(0, 0, sa * rotctl);
                 // fmouseposition = Input.mousePosition;
             }
@@ -190,14 +192,20 @@ public class UnitMove_sin : MonoBehaviour {
             Vector3 aTapPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             Collider2D aCollider2d = Physics2D.OverlapPoint(aTapPoint);
 
-            if (aCollider2d.gameObject==unit)
+            if (aCollider2d.gameObject == unit)
             {
                 indexCount++;
+                Color rand = new Color(Random.value, Random.value, Random.value, 1.0f);
                 lineLength.Add(Instantiate(lineObj));
                 activeLine.Add(lineLength[indexCount].GetComponent<Line>());
+                activeLine[indexCount].GetComponent<Renderer>().material.color = rand;
+                
 
                 GameObject obj = aCollider2d.transform.gameObject;
                 //Debug.Log("obj="+obj.name);
+            }
+            else {
+                return;
             }
             
         }
@@ -278,7 +286,7 @@ public class UnitMove_sin : MonoBehaviour {
             //ラインが直線のとき
        Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             arrow.SetActive(true);
-            //向きの変更
+            //矢印の向きの変更
             var vec = (mousePos - unit.transform.position).normalized;
             var angle = (Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg) - 90.0f;
             arrow.transform.rotation = Quaternion.Euler(0.0f, 0.0f, angle);
