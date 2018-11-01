@@ -16,7 +16,7 @@ public class PointCont : MonoBehaviour {
 
     public int Point;   //強化に使うポイント。privateに変更予定
 
-    public Text Ptext;  //ポイントを表示するテキスト
+	public Text Ptext;  //ポイントを表示するテキスト
 
 	// Use this for initialization
 	void Start () {
@@ -29,14 +29,14 @@ public class PointCont : MonoBehaviour {
     void Update()
     {
         //デバッグ用アップデート関数。消してください
-        Ptext.text = Point.ToString();
+        //Ptext.text = Point.ToString();
     }
 
 
 
     public void PGet(int p){
         Point += p;
-        Ptext.text = Point.ToString();
+        //Ptext.text = Point.ToString();
 
     }
 
@@ -47,7 +47,7 @@ public class PointCont : MonoBehaviour {
         }
 
         Point -= p;
-        Ptext.text = Point.ToString();
+        //Ptext.text = Point.ToString();
     }
 
 

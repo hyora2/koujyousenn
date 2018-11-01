@@ -1,9 +1,9 @@
-﻿using System.Collections;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-       
+
 public class AttackRange : MonoBehaviour {
-   
+
     [SerializeField] private float range = 0.5f;
     private UnitStatus unitStatus;
 
@@ -47,13 +47,11 @@ public class AttackRange : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        
-      
+
+
 	}
     public void Damage(int damage)
     {
         unitStatus.unitHp -= damage;
     }
 }
-
-

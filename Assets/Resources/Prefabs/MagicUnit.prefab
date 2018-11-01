@@ -33,7 +33,7 @@ GameObject:
   - component: {fileID: 61589184325556716}
   m_Layer: 0
   m_Name: MagicUnit
-  m_TagString: Unit
+  m_TagString: Undefined
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -265,11 +265,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11f3798acf9c94059b2b18ab97561622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hp: 30
-  power: 10
-  magichealingpower: 10
-  speed: 0.001
-  playerunit: 0
+  unitHp: 0
+  unitPower: 0
+  unitHealingpower: 0
+  unitspeed: 0
+  unitCheck: 0
+  getscore: 0
 --- !u!120 &120418995068338704
 LineRenderer:
   m_ObjectHideFlags: 1

@@ -11,6 +11,7 @@ public class MagicAttackMode : MonoBehaviour {
 	private bool canattack; //現在攻撃モードかどうか
 	private float wait; //弾を撃つ間隔
 	private MagicModeChange change;
+	private UnitStatus status;
 	private Transform verRot; //アタッチしているオブジェクトの位置
 	//private float sensitivity; //マウス感度
 	private float Xrot; //マウスの横軸の移動量の取得
@@ -21,6 +22,7 @@ public class MagicAttackMode : MonoBehaviour {
 		bulletSpeed = 10f;
 		wait = 1.0f;
 		change = gameObject.GetComponent<MagicModeChange>();
+		status = GetComponent<UnitStatus>();
 		verRot = GetComponent<Transform>();
 		//sensitivity = 1.5f;
 	}
@@ -31,7 +33,8 @@ public class MagicAttackMode : MonoBehaviour {
 		Xrot = Input.GetAxis("Mouse X");
 		if (Input.GetMouseButton(1))
         {
-            verRot.Rotate(0, 0, 5f * Xrot);
+			if (status.unitCheck == true)
+                verRot.Rotate(0, 0, 5f * Xrot);
         }      
 	}
 
@@ -58,7 +61,14 @@ public class MagicAttackMode : MonoBehaviour {
 	{
 		//弾発射
 		GameObject Bullets = Instantiate(Bullet, bulletPos) as GameObject;
-		Bullets.GetComponent<Rigidbody2D>().velocity = transform.up.normalized * bulletSpeed;
+		//if (status.unitCheck == false)
+        //{
+            //Bullets.GetComponent<Rigidbody2D>().velocity = transform.up.normalized * -bulletSpeed;
+        //}
+        //else
+        //{
+            Bullets.GetComponent<Rigidbody2D>().velocity = transform.up.normalized * bulletSpeed;
+        //}
 
 		yield return new WaitForSeconds(wait);
 

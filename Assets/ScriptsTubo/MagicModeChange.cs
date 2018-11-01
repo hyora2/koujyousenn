@@ -5,16 +5,30 @@ using UnityEngine;
 public class MagicModeChange : MonoBehaviour {
 
 	public bool attacking { get; set; } //攻撃モードならtrue、回復モードならfalse
+	public bool save { get; set; } //弾の発射を制御
 
 	private MagicAttackMode attackMode;
 	private MagicHealMode healMode;
+	private ModeSwich swich;
+
+	private GameObject Root;
+    private GameObject Wmenu;
+
+	//private int modenum; //1はattack、2はheal
 
 	// Use this for initialization
 	void Start () {
 		attacking = true;
+		save = true;
+		//modenum = 1;
 		attackMode = gameObject.GetComponent<MagicAttackMode>();
 		healMode = gameObject.GetComponent<MagicHealMode>();
-		Changed();
+
+		Root = transform.root.gameObject;
+        //Wmenu = Root.transform.Find("unitmenu/W_Menu").gameObject;
+        //swich = Wmenu.GetComponent<ModeSwich>();
+
+		Changed(1);
 	}
 	
 	// Update is called once per frame
@@ -24,30 +38,44 @@ public class MagicModeChange : MonoBehaviour {
 
 	private void FixedUpdate()
 	{
-		if (Input.GetKeyDown(KeyCode.M))
+		/*
+		if (attacking == false)
 		{
-			attacking = false;
-			Changed();
-
+			if (save == true)
+			{
+				//swich.Attack = true;
+                //swich.Cure = false;
+                modenum = 2;
+                Changed(modenum);
+			}
 		}
-		else if (Input.GetKeyDown(KeyCode.N))
+		else if (attacking == true)
 		{
-			attacking = true;
-			healMode.healing = false;
-			Changed();
+			if (save == true)
+			{
+				healMode.healing = false;
+                //swich.Attack = false;
+                //swich.Cure = true;
+                modenum = 1;
+                Changed(modenum);
+			}
 		}
+		*/
 	}
 
-	private void Changed()
+	public void Changed(int changenum)
 	{
-		if (attacking == true)
+		if (changenum == 1)
         {
+			//save = false;
             attackMode.Attack();
         }
-        else
+		else if (changenum == 2)
         {
+			//save = false;
             healMode.Heal();
         }
+		Debug.Log("name = " + gameObject.name + ", num = " + changenum);
 	}
 
 }

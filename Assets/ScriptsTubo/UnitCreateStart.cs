@@ -29,17 +29,17 @@ public class UnitCreateStart : MonoBehaviour {
 				unitPos = new Vector3(vx, vy, 0f); //生成するユニットの位置
 				Enemy[i] = Instantiate(EnemyKind[j], unitPos, Quaternion.Euler(0f, 0f, 180f)) as GameObject; //プレイヤーの方を向き生成
 				Enemy[i].AddComponent<enemyUnitMove>(); //敵が移動できるようにする
+				enemyUnitMove move = GetComponent<enemyUnitMove>();
+				move.unitTag = i + 1;
 				UnitStatus unitStatus = Enemy[i].GetComponent<UnitStatus>();
 				unitStatus.unitCheck = false;
-				//Enemy[i].SetActive(false);
-				//Enemy[i].SetActive(true);
 
                 if (size == 10)
 				{
 					MagicModeChange modeChange = Enemy[i].GetComponent<MagicModeChange>();
 					if (modeChange != null)
 					{
-						modeChange.attacking = false;
+						modeChange.attacking = true;
 					}
 					StartCoroutine(comp(Enemy[i]));
 				}
@@ -69,6 +69,11 @@ public class UnitCreateStart : MonoBehaviour {
 
                 if (size == 10)
                 {
+					MagicModeChange modeChange = Player[i].GetComponent<MagicModeChange>();
+                    if (modeChange != null)
+                    {
+                        modeChange.attacking = true;
+                    }
                     StartCoroutine(comp(Player[i]));
                 }
 

@@ -24,6 +24,8 @@ public class BulletCollision : MonoBehaviour {
     private void OnCollisionEnter2D(Collision2D collision)
 	{
 		Destroy(gameObject);
+		string tagstr = collision.gameObject.tag;
+		bool isUnit = tagstr.Contains("Unit");
         //中立拠点に当たったら
 		if (collision.gameObject.tag == "NeutralBase")
 		{
@@ -44,7 +46,7 @@ public class BulletCollision : MonoBehaviour {
 				//Destroy(gameObject);
 			}
             //敵ユニットに当たったら
-			else if (collision.gameObject.tag == "Unit")
+			else if (collision.gameObject.tag == "Unit" || isUnit == true)
 			{
 				UnitStatus unitStatus = collision.gameObject.GetComponent<UnitStatus>();
 				if (unitStatus.unitCheck == false)
@@ -70,7 +72,7 @@ public class BulletCollision : MonoBehaviour {
 				//Destroy(gameObject);
             }
             //ユニットに当たったら
-			else if (collision.gameObject.tag == "Unit")
+			else if (collision.gameObject.tag == "Unit" || isUnit == true)
 			{
 				UnitStatus unitStatus = collision.gameObject.GetComponent<UnitStatus>();
                 //プレイヤーのユニットかどうか

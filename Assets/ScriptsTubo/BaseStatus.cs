@@ -13,14 +13,18 @@ public class BaseStatus : MonoBehaviour {
 		private set;
 	}
 
+	public int getpoint; //中立の拠点を獲得した際に得られるポイントの量(獲得量は２つの拠点で同じにすること)
+
 	private BaseManager baseManager;
 	private UnitCreateStart unitCreateStart;
+	private PointCont point;
 
 	// Use this for initialization
 	void Start () {
 		neut = 0;
 		baseManager = GameObject.Find("BaseManager").GetComponent<BaseManager>();
 		unitCreateStart = GameObject.Find("GameSystem").GetComponent<UnitCreateStart>();
+		point = GameObject.Find("GameSystem").GetComponent<PointCont>();
 	}
 	
 	// Update is called once per frame
@@ -31,50 +35,53 @@ public class BaseStatus : MonoBehaviour {
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
 		//ダメージ判定
-		if (collision.gameObject.tag == "EnemyUnit" && BaseTag == 1)
+		UnitStatus status = collision.gameObject.GetComponent<UnitStatus>();
+		string tagstr = collision.gameObject.tag;
+        bool isUnit = tagstr.Contains("Unit");
+
+		if (isUnit == true && status.unitCheck == false && BaseTag == 1)
 		{
-			UnitStatus unitStatus = collision.gameObject.GetComponent<UnitStatus>();
-			BaseHP -= unitStatus.unitPower;
+			BaseHP -= status.unitPower;
 		}
-		else if (collision.gameObject.tag == "PlayerUnit" && BaseTag == 2)
+		else if (isUnit == true && status.unitCheck == false && BaseTag == 2)
 		{
-			UnitStatus unitStatus = collision.gameObject.GetComponent<UnitStatus>();
-			BaseHP -= unitStatus.unitPower;
+			BaseHP -= status.unitPower;
 		}
-		else if ((collision.gameObject.tag == "EnemyUnit" || collision.gameObject.tag == "PlayerUnit") && BaseTag == 3)
+		else if (isUnit == true && BaseTag == 3)
 		{
-			UnitStatus unitStatus = collision.gameObject.GetComponent<UnitStatus>();
-			BaseHP -= unitStatus.unitPower;
+			BaseHP -= status.unitPower;
 			//中立拠点がプレイヤーもしくは敵の拠点になるかどうか判定
 			if (BaseHP <= 0)
 			{
-				if (collision.gameObject.tag == "PlayerUnit")
+				if (status.unitCheck == true)
 				{
 					neut = 1;
 					baseManager.playerbaseCount++;
+					point.PGet(getpoint);
 					BaseP(gameObject);
 				}
-				else if (collision.gameObject.tag == "EnemyUnit")
+				else if (status.unitCheck == false)
 				{
 					neut = 2;
 					BaseE(gameObject);
 				}
 			}
 		}
-		else if ((collision.gameObject.tag == "EnemyUnit" || collision.gameObject.tag == "PlayerUnit") && BaseTag == 4)
+		else if (isUnit == true && BaseTag == 4)
 		{
 			UnitStatus unitStatus = collision.gameObject.GetComponent<UnitStatus>();
 			BaseHP -= unitStatus.unitPower;
 			//中立拠点がプレイヤーもしくは敵の拠点になるかどうか判定
 			if (BaseHP <= 0)
             {
-                if (collision.gameObject.tag == "PlayerUnit")
+				if (status.unitCheck == true)
                 {
                     neut = 1;
 					baseManager.playerbaseCount++;
+					point.PGet(getpoint);
 					BaseP(gameObject);
                 }
-                else if (collision.gameObject.tag == "EnemyUnit")
+				else if (status.unitCheck == false)
                 {
                     neut = 2;
 					BaseE(gameObject);

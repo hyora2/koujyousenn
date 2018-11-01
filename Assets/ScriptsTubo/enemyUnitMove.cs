@@ -7,6 +7,8 @@ public class enemyUnitMove : MonoBehaviour {
 
 	public bool canMove { get; set; } //移動できるか出来ないか 拠点の一定範囲内に入ったら動きを止める
 	public bool rotP { get; set; } //敵拠点に到着した時、プレイヤーの拠点側を向く
+	public int unitTag { get; set; }
+	//public int pinchUnit { get; set; } //体力がピンチのユニットが増えてきた場合、魔法兵が回復モードに切り替える
 
     //基地の設定
 	private GameObject playerBase; //プレイヤーの拠点
@@ -15,9 +17,11 @@ public class enemyUnitMove : MonoBehaviour {
 	private BaseStatus base1, base2; //中立の拠点が現在中立なのかどうか確認
 	private BaseManager baseManager;
 	private UnitCreateStart unitCreateStart;
+	private MagicModeChange magicModeChange;
 	private bool rot, rotN1, rotN2; //拠点への向き変更
+	private int modenum;
 
-	private Rigidbody2D rb;
+	//private Rigidbody2D rb;
 
 	// Use this for initialization
 	void Start () {
@@ -37,20 +41,31 @@ public class enemyUnitMove : MonoBehaviour {
 		rotP = false;
 		rotN1 = true;
 		rotN2 = true;
+
+		modenum = 1;
+		if (gameObject.tag == "WizardUnit")
+		{
+			magicModeChange = GetComponent<MagicModeChange>();
+			StartCoroutine("modechange");
+		}
+		else
+		{
+			magicModeChange = null;
+		}
 	}
 	
 	// Update is called once per frame
 	void Update () {
 		if (canMove == true)
         {
-            move(unitCreateStart.Enemy);
+            move();
         }
 	}
 
 	private void FixedUpdate()
 	{
 
-        //向き指定→ターゲットと一定の距離になるまで移動→敵ユニットもしくは拠点攻撃
+        //個々用に書き直す
 
 		//中立の拠点を取りに行くユニットを決める
 		if (base1.neut == 0)
@@ -58,12 +73,12 @@ public class enemyUnitMove : MonoBehaviour {
 			if (rotN1 == true)
 			{
 				rotN1 = false;
-				for (int i = 0; i < 10; i += 2)
+				if (unitTag % 2 == 0)
                 {
 					//unitCreateStart.Enemy[i].transform.LookAt(Neutral1.transform);
-					var vec = (Neutral1.transform.position - unitCreateStart.Enemy[i].transform.position).normalized;
+					var vec = (Neutral1.transform.position - transform.position).normalized;
 					var angle = (Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg) - 90.0f;
-					unitCreateStart.Enemy[i].transform.rotation = Quaternion.Euler(0f, 0f, angle);
+					transform.rotation = Quaternion.Euler(0f, 0f, angle);
                 }
 			}
 		}
@@ -72,12 +87,12 @@ public class enemyUnitMove : MonoBehaviour {
 			if (rotN2 == true)
 			{
 				rotN2 = false;
-				for (int i = 0; i < 10; i += 2)
+				if (unitTag % 2 == 0)
                 {
 					//unitCreateStart.Enemy[i].transform.LookAt(Neutral2.transform);
-					var vec = (Neutral2.transform.position - unitCreateStart.Enemy[i].transform.position).normalized;
+					var vec = (Neutral2.transform.position - transform.position).normalized;
                     var angle = (Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg) - 90.0f;
-                    unitCreateStart.Enemy[i].transform.rotation = Quaternion.Euler(0f, 0f, angle);
+                    transform.rotation = Quaternion.Euler(0f, 0f, angle);
                 }
 				canMove = true;
 			}
@@ -89,26 +104,23 @@ public class enemyUnitMove : MonoBehaviour {
 			if (rot == true)
 			{
 				rot = false;
-				for (int i = 0; i < 10; i++)
-                {
-                    //unitCreateStart.Enemy[i].transform.LookAt(enemyBase.transform);
-					var vec = (enemyBase.transform.position - unitCreateStart.Enemy[i].transform.position).normalized;
-                    var angle = (Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg) - 90.0f;
-                    unitCreateStart.Enemy[i].transform.rotation = Quaternion.Euler(0f, 0f, angle);
-                }
+
+                //unitCreateStart.Enemy[i].transform.LookAt(enemyBase.transform);
+				var vec = (enemyBase.transform.position - transform.position).normalized;
+                var angle = (Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg) - 90.0f;
+                transform.rotation = Quaternion.Euler(0f, 0f, angle);
+
 				canMove = true;
 			}
             //敵の拠点周辺にたどり着いたらプレイヤーの拠点側を向く
 			if (rotP == true)
 			{
 				rotP = false;
-				for (int i = 0; i < 10; i++)
-				{
-					//unitCreateStart.Enemy[i].transform.LookAt(playerBase.transform);
-					var vec = (playerBase.transform.position - unitCreateStart.Enemy[i].transform.position).normalized;
-                    var angle = (Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg) - 90.0f;
-                    unitCreateStart.Enemy[i].transform.rotation = Quaternion.Euler(0f, 0f, angle);
-				}
+
+				//unitCreateStart.Enemy[i].transform.LookAt(playerBase.transform);
+				var vec = (playerBase.transform.position - transform.position).normalized;
+                var angle = (Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg) - 90.0f;
+				transform.rotation = Quaternion.Euler(0f, 0f, angle);
 			}
             
 		}
@@ -118,12 +130,12 @@ public class enemyUnitMove : MonoBehaviour {
 			if (rot == true)
 			{
 				rot = false;
-				for (int i = 0; i < 10; i += 2)
+				if (unitTag % 2 == 0)
                 {
                     //unitCreateStart.Enemy[i].transform.LookAt(playerBase.transform);
-					var vec = (playerBase.transform.position - unitCreateStart.Enemy[i].transform.position).normalized;
+					var vec = (playerBase.transform.position - transform.position).normalized;
                     var angle = (Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg) - 90.0f;
-                    unitCreateStart.Enemy[i].transform.rotation = Quaternion.Euler(0f, 0f, angle);
+                    transform.rotation = Quaternion.Euler(0f, 0f, angle);
                 }
 				canMove = true;
 			}
@@ -134,26 +146,40 @@ public class enemyUnitMove : MonoBehaviour {
             if (rot == true)
 			{
 				rot = false;
-				for (int i = 0; i < 10; i++)
-				{
-					//unitCreateStart.Enemy[i].transform.LookAt(playerBase.transform);
-					var vec = (playerBase.transform.position - unitCreateStart.Enemy[i].transform.position).normalized;
-                    var angle = (Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg) - 90.0f;
-                    unitCreateStart.Enemy[i].transform.rotation = Quaternion.Euler(0f, 0f, angle);
-				}
+
+				//unitCreateStart.Enemy[i].transform.LookAt(playerBase.transform);
+				var vec = (playerBase.transform.position - transform.position).normalized;
+                var angle = (Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg) - 90.0f;
+                transform.rotation = Quaternion.Euler(0f, 0f, angle);
+
 				canMove = true;
 			}
         }
 	}
 
-	private void move(GameObject[] objects)
+	private void move()
 	{
-		for (int i = 0; i < 10; i++)
+		//rb = objects[i].GetComponent<Rigidbody2D>();
+		UnitStatus status = GetComponent<UnitStatus>();
+		//rb.velocity = new Vector2(0, status.unitspeed);
+		transform.Translate(0f, status.unitspeed, 0f);
+	}
+
+	private IEnumerator modechange()
+	{
+		magicModeChange.Changed(modenum);
+
+		yield return new WaitForSeconds(10f);
+
+		switch(modenum)
 		{
-			//rb = objects[i].GetComponent<Rigidbody2D>();
-			UnitStatus status = objects[i].GetComponent<UnitStatus>();
-			//rb.velocity = new Vector2(status.unitspeed, 0f);
-			objects[i].transform.Translate(0f, status.unitspeed, 0f);
+			case 1:
+				modenum = 2;
+				break;
+			case 2:
+				modenum = 1;
+				break;
 		}
+		StartCoroutine("modechange");
 	}
 }
