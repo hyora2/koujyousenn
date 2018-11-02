@@ -39,6 +39,7 @@ GameObject:
   - component: {fileID: 4920298862175534}
   - component: {fileID: 58501348563723876}
   - component: {fileID: 50507320885379172}
+  - component: {fileID: 114306705973715906}
   m_Layer: 0
   m_Name: unit
   m_TagString: Untagged
@@ -602,7 +603,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitmenu: {fileID: 1971798995741346}
-  point: {fileID: 0}
   unit: {fileID: 1124262344081602}
   drower: {fileID: 1165708545617254}
   Ui_unit: {fileID: 1877628315235764}
@@ -714,6 +714,23 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u56DE\u5FA9\u30E2\u30FC\u30C9"
+--- !u!114 &114306705973715906
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1124262344081602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11f3798acf9c94059b2b18ab97561622, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitHp: 200
+  unitPower: 20
+  unitHealingpower: 0
+  unitspeed: 0
+  unitCheck: 0
+  getscore: 0
 --- !u!114 &114376185081954948
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -941,7 +958,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitmenu: {fileID: 1971798995741346}
-  point: {fileID: 0}
   unit: {fileID: 1124262344081602}
   drower: {fileID: 1165708545617254}
   Ui_unit: {fileID: 1877628315235764}

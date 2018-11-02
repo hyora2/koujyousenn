@@ -16,10 +16,12 @@ public class ModeSwich : MonoBehaviour {
         //if (Attack == true) {
 		if (modeChange.attacking == false){
             a.SetActive(true);
+            c.SetActive(false);
         }
 		//else if(Cure==true){
 		else if (modeChange.attacking == true){
             c.SetActive(true);
+            a.SetActive(false);
         }
         
 		
