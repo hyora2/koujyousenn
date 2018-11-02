@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Cure : MonoBehaviour {
 
+	public GameObject unitmenu;
+
 	// Use this for initialization
 	void Start () {
         
@@ -17,7 +19,9 @@ public class Cure : MonoBehaviour {
 	}
     public void ButtonPush()
     {
-       // Debug.Log("cure");
+
+		unitmenu.SetActive(false);
+        Debug.Log("cure");
 
        
 

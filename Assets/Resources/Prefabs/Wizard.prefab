@@ -37,7 +37,7 @@ GameObject:
   m_Layer: 0
   m_Name: BulletPos
   m_TagString: Untagged
-  m_Icon: {fileID: 7866945982896999795, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -317,6 +317,7 @@ GameObject:
   - component: {fileID: 223137884272539982}
   - component: {fileID: 114082585087292212}
   - component: {fileID: 114263851826437836}
+  - component: {fileID: 58287483860709930}
   m_Layer: 5
   m_Name: Wizard
   m_TagString: Untagged
@@ -458,6 +459,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &58287483860709930
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1975698684183556}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.3
 --- !u!58 &58536647907742336
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -633,6 +649,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cbutton: {fileID: 1450820456308166}
+  unitmenu: {fileID: 0}
   modeChange: {fileID: 114130590443661356}
 --- !u!114 &114214764132241200
 MonoBehaviour:
@@ -648,7 +665,7 @@ MonoBehaviour:
   lineObj: {fileID: 1141418370373764, guid: 90fd33bc43cfe2d40ade7e8069556052, type: 2}
   lineLimit: 10
   deleteSoon: 0
-  linestraight: 1
+  linestraight: 0
   deleteTime: 30
   unit: {fileID: 1841966312750830}
   ui_unit: {fileID: 1566102507990798}
@@ -960,6 +977,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cbutton: {fileID: 1330309381927450}
+  unitmenu: {fileID: 0}
   modeChange: {fileID: 114130590443661356}
 --- !u!114 &114575255518332636
 MonoBehaviour:
@@ -1062,6 +1080,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b21c5a529a9c48546b17bc85f4ffdd85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitmenu: {fileID: 0}
 --- !u!114 &114701439487091212
 MonoBehaviour:
   m_ObjectHideFlags: 1

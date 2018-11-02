@@ -7,7 +7,7 @@ public class enemyUnitMove : MonoBehaviour {
 
 	public bool canMove { get; set; } //移動できるか出来ないか 拠点の一定範囲内に入ったら動きを止める
 	public bool rotP { get; set; } //敵拠点に到着した時、プレイヤーの拠点側を向く
-	public int unitTag { get; set; }
+	public int unitTag;
 	//public int pinchUnit { get; set; } //体力がピンチのユニットが増えてきた場合、魔法兵が回復モードに切り替える
 
     //基地の設定
@@ -25,7 +25,7 @@ public class enemyUnitMove : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		canMove = true;
+		canMove = false;
 
 		playerBase = GameObject.Find("PlayerBase");
 		enemyBase = GameObject.Find("EnemyBase");
@@ -73,7 +73,6 @@ public class enemyUnitMove : MonoBehaviour {
 			if (rotN1 == true)
 			{
 				rotN1 = false;
-				canMove = false;
 				if (unitTag % 2 == 1)
                 {
 					//unitCreateStart.Enemy[i].transform.LookAt(Neutral1.transform);
@@ -82,6 +81,10 @@ public class enemyUnitMove : MonoBehaviour {
 					transform.rotation = Quaternion.Euler(0f, 0f, angle);
 					canMove = true;
                 }
+				else if (unitTag % 2 == 0 || unitTag == 4)
+				{
+					canMove = false;
+				}
 			}
 		}
 		else if (base2.neut == 0)
@@ -97,6 +100,10 @@ public class enemyUnitMove : MonoBehaviour {
                     var angle = (Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg) - 90.0f;
                     transform.rotation = Quaternion.Euler(0f, 0f, angle);
 					canMove = true;
+                }
+				else if (unitTag % 2 == 0 || unitTag == 4)
+                {
+                    canMove = false;
                 }
 				//canMove = true;
 			}
@@ -143,6 +150,10 @@ public class enemyUnitMove : MonoBehaviour {
 					transform.rotation = Quaternion.Euler(0f, 0f, angle);
 					canMove = true;
 				}
+				else if (unitTag % 2 == 0 || unitTag == 4)
+                {
+                    canMove = false;
+                }
 				//canMove = true;
 			}
 		}
