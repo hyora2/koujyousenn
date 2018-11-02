@@ -70,7 +70,11 @@ public class UnitMove_sin : MonoBehaviour {
 
     float deftimemove;
 
+    float dfdragtime = 0.5f;
+    //float Ldfdragtime = 0.1f;
     float dragtime = 1f;//右ドラッグ時間
+    bool Ldragtime = false;//左ドラッグ時間
+   
 
    
 
@@ -101,6 +105,9 @@ public class UnitMove_sin : MonoBehaviour {
 
         timemove = deftimemove;
 
+        dragtime = dfdragtime;
+       // Ldragtime = Ldfdragtime;
+
 
     }
 
@@ -113,7 +120,9 @@ public class UnitMove_sin : MonoBehaviour {
             pivot();
             if (goal==true) {
                 DrawingLine();
+
                 //SetLine();
+              
             }
         }
         else { linelifetime -= Time.deltaTime;
@@ -131,12 +140,17 @@ public class UnitMove_sin : MonoBehaviour {
                 
             }
         }
-        Move();
+        if (Ldragtime == true)
+        {
+            Move();
+        }
+      
         
         if(drow_now==false&&listcount==mousePosList.Count||delete==true){
             //ここでdrow_nowの判定をしないとlistcountが増えない。
             goal = true;
             moving = false;
+            Ldragtime = false;
             if (indexCount >= 0)
             {
                 
@@ -178,7 +192,7 @@ public class UnitMove_sin : MonoBehaviour {
          if (Input.GetMouseButtonUp(1))
         {
             touchcollider = false;
-            dragtime = 1f;
+            dragtime = dfdragtime;
             return;
         }
 
@@ -215,7 +229,9 @@ public class UnitMove_sin : MonoBehaviour {
        
         if (Input.GetMouseButton(0))
         {
-           
+            Ldragtime =true;
+           // Debug.Log("Ldragtime=" + Ldragtime);
+
             drow_now = true;
             SetLine();//
             LineLimit();
@@ -279,15 +295,16 @@ public class UnitMove_sin : MonoBehaviour {
     {
         if (indexCount > -1 && activeLine[indexCount] != null && linestraight == false)
         {
-
+            
             Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             mousePosList.Add(mousePos);
             activeLine[indexCount].LineUpdate(mousePos);
             //Debug.Log(mousePosList.Count);
         }
       else if (indexCount > -1 && activeLine[indexCount] != null && linestraight == true) {
+           
             //ラインが直線のとき
-       Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            Vector3 mousePos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
             arrow.SetActive(true);
             //矢印の向きの変更
             var vec = (mousePos - unit.transform.position).normalized;

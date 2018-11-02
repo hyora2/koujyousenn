@@ -589,6 +589,7 @@ MonoBehaviour:
   Cure: 0
   a: {fileID: 1197094373666354}
   c: {fileID: 1193759851327796}
+  modeChange: {fileID: 0}
 --- !u!114 &114230381817671974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -666,14 +667,14 @@ MonoBehaviour:
   lineObj: {fileID: 1141418370373764, guid: 90fd33bc43cfe2d40ade7e8069556052, type: 2}
   lineLimit: 10
   deleteSoon: 0
-  linestraight: 1
+  linestraight: 0
   deleteTime: 30
   unit: {fileID: 1124262344081602}
   ui_unit: {fileID: 1877628315235764}
   arrow: {fileID: 1399641355999196}
   rotctl: 1
   linespan: 0.1
-  speed: 5
+  speed: 4
 --- !u!114 &114298307447559452
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -858,6 +859,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cbutton: {fileID: 1193759851327796}
+  unitmenu: {fileID: 1971798995741346}
+  modeChange: {fileID: 0}
 --- !u!114 &114572439392718494
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -927,6 +930,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b21c5a529a9c48546b17bc85f4ffdd85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitmenu: {fileID: 1971798995741346}
 --- !u!114 &114877018283078326
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -939,6 +943,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cbutton: {fileID: 1197094373666354}
+  unitmenu: {fileID: 1971798995741346}
+  modeChange: {fileID: 0}
 --- !u!114 &114903807602035230
 MonoBehaviour:
   m_ObjectHideFlags: 1

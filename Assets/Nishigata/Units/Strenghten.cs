@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Strenghten : MonoBehaviour {
-
-	// Use this for initialization
-	void Start () {
+    public GameObject unitmenu;
+    // Use this for initialization
+    void Start () {
         
 
     }
@@ -16,7 +16,7 @@ public class Strenghten : MonoBehaviour {
 	}
     public void ButtonPush()
     {
-
+        unitmenu.SetActive(false);
 
 
     }

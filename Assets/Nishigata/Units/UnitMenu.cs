@@ -39,11 +39,11 @@ public class UnitMenu : MonoBehaviour {
                     u_menu.SetActive(true);
                     if (unit.gameObject.tag == "WizardUnit") {
                         w_menu.SetActive(true);
-                        
 
-                        
+                        active = true;
+
                     }
-                    active = true;
+                   
                 }
                
             }
