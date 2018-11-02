@@ -11,6 +11,7 @@ TagManager:
   - WizardUnit
   - C_Mode
   - A_Mode
+  - PointCount
   layers:
   - Default
   - TransparentFX
