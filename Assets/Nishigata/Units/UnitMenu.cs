@@ -62,13 +62,16 @@ public class UnitMenu : MonoBehaviour {
             else { objcheck = false; }
             if (objcheck==false)
             {
+                //Debug.Log("Oha");
                 if (active == true)
                 {
-                   
-                    u_menu.SetActive(false);
-                   
+                    Debug.Log("hallo");
                     active = false;
+                    u_menu.SetActive(false);
+                    drower.GetComponent<UnitMove_sin>().enabled = true;
+
                 }
+                else { Debug.Log("falseoha"); }
                 
             }
                
