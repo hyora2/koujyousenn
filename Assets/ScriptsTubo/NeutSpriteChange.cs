@@ -15,7 +15,8 @@ public class NeutSpriteChange : MonoBehaviour {
 		foreach (Transform child in transform)
 		{
 			sprites[i] = child.gameObject.GetComponent<SpriteRenderer>();
-			i++;
+			if (sprites[i] != null)
+				i++;
 		}
 	}
 	

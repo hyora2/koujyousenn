@@ -24,6 +24,8 @@ public class BaseStatus : MonoBehaviour {
 	private SpriteRenderer[] renderers;
 	private SpriteRenderer damageSprite;
 
+	private GameObject playerbase;
+
 	// Use this for initialization
 	void Start () {
 		neut = 0;
@@ -33,15 +35,18 @@ public class BaseStatus : MonoBehaviour {
 		point = GameObject.Find("GameSystem").GetComponent<PointCont>();
 		circle = GetComponent<CircleCollider2D>();
 
-		renderers = new SpriteRenderer[4];
+		renderers = new SpriteRenderer[10];
 		int i = 0;
 		foreach (Transform child in transform)
 		{
 			renderers[i] = child.gameObject.GetComponent<SpriteRenderer>();
-			i++;
+			if (renderers != null)
+			    i++;
 		}
 		damageSprite = renderers[3];
-		damageSprite.enabled = false;
+		//damageSprite.enabled = false;
+
+		playerbase = GameObject.Find("PlayerBase");
 	}
 	
 	// Update is called once per frame
@@ -285,7 +290,7 @@ public class BaseStatus : MonoBehaviour {
 
 	public void damage(int dam)
 	{
-		if (BaseHP >= 0)
+		if (BaseHP >= 0 && damageSprite != null)
 		    damageSprite.enabled = true;
 		BaseHP -= dam;
 		StartCoroutine("Span");

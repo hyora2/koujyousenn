@@ -342,7 +342,7 @@ Transform:
   m_GameObject: {fileID: 1403217536547128}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: -324, y: -235.5, z: 0}
-  m_LocalScale: {x: 62.991093, y: 62.991093, z: 62.991093}
+  m_LocalScale: {x: 62.99109, y: 62.99109, z: 62.991093}
   m_Children:
   - {fileID: 4659599871890434}
   - {fileID: 4779081184567926}
@@ -627,6 +627,7 @@ MonoBehaviour:
   w_menu: {fileID: 1583236407854986}
   u_menu: {fileID: 1125631563700688}
   drower: {fileID: 1734120369496920}
+  active: 0
 --- !u!114 &114278092575817120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -639,8 +640,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitmenu: {fileID: 0}
-  point: {fileID: 0}
   unit: {fileID: 0}
+  drower: {fileID: 0}
+  Ui_unit: {fileID: 0}
 --- !u!114 &114315500945122748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -731,8 +733,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11f3798acf9c94059b2b18ab97561622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitHp: 70
-  unitPower: 20
+  unitHp: 170
+  unitPower: 30
   unitHealingpower: 0
   unitspeed: 0
   unitCheck: 1
@@ -898,8 +900,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   unitmenu: {fileID: 0}
-  point: {fileID: 0}
   unit: {fileID: 0}
+  drower: {fileID: 0}
+  Ui_unit: {fileID: 0}
 --- !u!114 &114644197187304816
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1059,6 +1062,8 @@ MonoBehaviour:
   Cbutton: {fileID: 1303763328676048}
   unitmenu: {fileID: 0}
   unit: {fileID: 0}
+  drower: {fileID: 0}
+  Ui_unit: {fileID: 0}
   modeChange: {fileID: 0}
 --- !u!114 &114844784864469792
 MonoBehaviour:
@@ -1134,6 +1139,8 @@ MonoBehaviour:
   Cbutton: {fileID: 1008746833437856}
   unitmenu: {fileID: 0}
   unit: {fileID: 0}
+  drower: {fileID: 0}
+  Ui_unit: {fileID: 0}
   modeChange: {fileID: 0}
 --- !u!120 &120348411217720358
 LineRenderer:
@@ -1233,7 +1240,7 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1498509629427606}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1

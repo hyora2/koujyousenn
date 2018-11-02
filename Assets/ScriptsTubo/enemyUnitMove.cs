@@ -81,7 +81,7 @@ public class enemyUnitMove : MonoBehaviour {
 					transform.rotation = Quaternion.Euler(0f, 0f, angle);
 					canMove = true;
                 }
-				else if (unitTag % 2 == 0 || unitTag == 4)
+				else if (unitTag % 2 == 0)
 				{
 					canMove = false;
 				}
@@ -172,6 +172,7 @@ public class enemyUnitMove : MonoBehaviour {
 				//canMove = true;
 			}
         }
+		Debug.Log("Tag" + unitTag + "," + canMove);
 	}
 
 	private void move()
