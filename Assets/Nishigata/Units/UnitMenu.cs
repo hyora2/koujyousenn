@@ -39,10 +39,7 @@ public class UnitMenu : MonoBehaviour {
                     u_menu.SetActive(true);
                     if (unit.gameObject.tag == "WizardUnit") {
                         w_menu.SetActive(true);
-						GameObject Attack = transform.Find("unitmenu/W_Menu/AttackMode").gameObject;
-						ChangeMode changeModeA = Attack.GetComponent<ChangeMode>();
-						GameObject Cure = transform.Find("unitmenu/W_Menu/CureMode").gameObject;
-						ChangeMode changeModeC = Cure.GetComponent<ChangeMode>();
+                        
 
                         
                     }
@@ -58,7 +55,7 @@ public class UnitMenu : MonoBehaviour {
             Collider2D aCollider2d = Physics2D.OverlapPoint(aTapPoint);
             Debug.Log("collider=" + aCollider2d);
 
-            if (aCollider2d == u_menu) { objcheck = true; }
+			if (aCollider2d.gameObject == u_menu) { objcheck = true; }
             else { objcheck = false; }
             if (objcheck==false)
             {

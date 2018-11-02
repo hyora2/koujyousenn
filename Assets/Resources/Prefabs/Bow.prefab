@@ -22,7 +22,7 @@ GameObject:
   m_Layer: 0
   m_Name: BulletPos
   m_TagString: Untagged
-  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -110,6 +110,7 @@ GameObject:
   - component: {fileID: 50018073097236964}
   - component: {fileID: 114584326034610910}
   - component: {fileID: 114071934939472056}
+  - component: {fileID: 58279052265159770}
   m_Layer: 0
   m_Name: unit
   m_TagString: Unit
@@ -453,6 +454,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &58279052265159770
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1217644843437592}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.3
 --- !u!58 &58654438561729242
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -619,6 +635,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b21c5a529a9c48546b17bc85f4ffdd85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitmenu: {fileID: 0}
 --- !u!114 &114327895201517404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1042,6 +1059,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cbutton: {fileID: 1143753474601380}
+  unitmenu: {fileID: 0}
   modeChange: {fileID: 0}
 --- !u!114 &114879019335150370
 MonoBehaviour:
@@ -1110,6 +1128,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cbutton: {fileID: 1324269665238796}
+  unitmenu: {fileID: 0}
   modeChange: {fileID: 0}
 --- !u!120 &120704232122275610
 LineRenderer:

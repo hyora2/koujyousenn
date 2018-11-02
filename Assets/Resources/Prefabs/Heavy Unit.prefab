@@ -160,6 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7ec85c3e531c4797821381ae08bfa58, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitTag: 0
 --- !u!114 &114750558966949344
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -188,4 +189,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 154f4e6c0f27e4f15829503f7fdc1e9b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  range: 0.5
+  range: 1.3
