@@ -7,12 +7,15 @@ public class AttackRange : MonoBehaviour {
     [SerializeField] private float range = 0.5f;
     private UnitStatus unitStatus;
 	private bool candamage;
+	private SpriteRenderer damageRenderer;
 
 	// Use this for initialization
 	void Start () {
         GetComponent<CircleCollider2D>().radius = range;
         unitStatus = GetComponent<UnitStatus>();
 		candamage = true;
+		damageRenderer = transform.Find("damage").gameObject.GetComponent<SpriteRenderer>();
+        damageRenderer.enabled = false;
 	}
     
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -64,7 +67,9 @@ public class AttackRange : MonoBehaviour {
 	}
     public void Damage(int damage)
     {
+		damageRenderer.enabled = true;
         unitStatus.unitHp -= damage;
+		StartCoroutine("SpanRend");
     }
 
 	private IEnumerator Span()
@@ -73,5 +78,13 @@ public class AttackRange : MonoBehaviour {
 		yield return new WaitForSeconds(2f);
 
 		candamage = true;
+	}
+
+	private IEnumerator SpanRend()
+	{
+
+		yield return new WaitForSeconds(0.5f);
+
+		damageRenderer.enabled = false;
 	}
 }

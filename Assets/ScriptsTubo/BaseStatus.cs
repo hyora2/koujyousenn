@@ -21,6 +21,8 @@ public class BaseStatus : MonoBehaviour {
 	private PointCont point;
 
 	private CircleCollider2D circle;
+	private SpriteRenderer[] renderers;
+	private SpriteRenderer damageSprite;
 
 	// Use this for initialization
 	void Start () {
@@ -30,6 +32,16 @@ public class BaseStatus : MonoBehaviour {
 		unitCreateStart = GameObject.Find("GameSystem").GetComponent<UnitCreateStart>();
 		point = GameObject.Find("GameSystem").GetComponent<PointCont>();
 		circle = GetComponent<CircleCollider2D>();
+
+		renderers = new SpriteRenderer[4];
+		int i = 0;
+		foreach (Transform child in transform)
+		{
+			renderers[i] = child.gameObject.GetComponent<SpriteRenderer>();
+			i++;
+		}
+		damageSprite = renderers[3];
+		damageSprite.enabled = false;
 	}
 	
 	// Update is called once per frame
@@ -48,15 +60,15 @@ public class BaseStatus : MonoBehaviour {
 
 			if (isUnit == true && status.unitCheck == false && BaseTag == 1)
 			{
-				BaseHP -= status.unitPower;
+				damage(status.unitPower);
 			}
 			else if (isUnit == true && status.unitCheck == true && BaseTag == 2)
 			{
-				BaseHP -= status.unitPower;
+				damage(status.unitPower);
 			}
 			else if (isUnit == true && BaseTag == 3)
 			{
-				BaseHP -= status.unitPower;
+				damage(status.unitPower);
 				//中立拠点がプレイヤーもしくは敵の拠点になるかどうか判定
 				if (BaseHP <= 0 && occu == true)
 				{
@@ -79,7 +91,7 @@ public class BaseStatus : MonoBehaviour {
 			}
 			else if (isUnit == true && BaseTag == 4)
 			{
-				BaseHP -= status.unitPower;
+				damage(status.unitPower);
 				//中立拠点がプレイヤーもしくは敵の拠点になるかどうか判定
 				if (BaseHP <= 0 && occu == true)
 				{
@@ -114,15 +126,15 @@ public class BaseStatus : MonoBehaviour {
 			{
 				if (Bstatus.unitCheck == false && BaseTag == 1)
 				{
-					BaseHP -= Bstatus.unitPower;
+					damage(Bstatus.unitPower);
 				}
 				else if (Bstatus.unitCheck == true && BaseTag == 2)
 				{
-					BaseHP -= Bstatus.unitPower;
+					damage(Bstatus.unitPower);
 				}
 				else if (BaseTag == 3)
 				{
-					BaseHP -= Bstatus.unitPower;
+					damage(Bstatus.unitPower);
 					//中立拠点がプレイヤーもしくは敵の拠点になるかどうか判定
 					if (BaseHP <= 0 && occu == true)
 					{
@@ -145,7 +157,7 @@ public class BaseStatus : MonoBehaviour {
 				}
 				else if (BaseTag == 4)
 				{
-					BaseHP -= Bstatus.unitPower;
+					damage(Bstatus.unitPower);
 					//中立拠点がプレイヤーもしくは敵の拠点になるかどうか判定
 					if (BaseHP <= 0 && occu == true)
 					{
@@ -273,7 +285,10 @@ public class BaseStatus : MonoBehaviour {
 
 	public void damage(int dam)
 	{
+		if (BaseHP >= 0)
+		    damageSprite.enabled = true;
 		BaseHP -= dam;
+		StartCoroutine("Span");
 	}
 
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -300,6 +315,14 @@ public class BaseStatus : MonoBehaviour {
                 unitMove.canMove = true;
             }
         }
+	}
+
+	private IEnumerator Span()
+	{
+
+		yield return new WaitForSeconds(0.5f);
+
+		damageSprite.enabled = false;
 	}
 
 }
