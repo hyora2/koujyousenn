@@ -8,6 +8,7 @@ public class ChangeMode : MonoBehaviour {
     public GameObject Cbutton;
 	public GameObject unitmenu;
     public GameObject unit;
+    public GameObject drower;
     //private GameObject Root;
     //private GameObject magicunit;
     [SerializeField]
@@ -39,7 +40,8 @@ public class ChangeMode : MonoBehaviour {
         //modeChange.save = true;
         //modeChange.attacking = false;
         unit.GetComponent<ModeSwich>().modeChange.attacking =false;
-		unitmenu.SetActive(false);
+        drower.GetComponent<UnitMove_sin>().enabled = true;
+        unitmenu.SetActive(false);
 		Debug.Log("Heal");
 		//modeChange.Changed(2);
     }
@@ -47,7 +49,8 @@ public class ChangeMode : MonoBehaviour {
         //modeChange.save = true;
         //modeChange.attacking = true;
         unit.GetComponent<ModeSwich>().modeChange.attacking = true;
-		unitmenu.SetActive(false);
+        drower.GetComponent<UnitMove_sin>().enabled = true;
+        unitmenu.SetActive(false);
 		Debug.Log("Attack");
 		//modeChange.Changed(1);
     }

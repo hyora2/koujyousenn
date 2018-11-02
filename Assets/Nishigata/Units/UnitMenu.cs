@@ -22,6 +22,8 @@ public class UnitMenu : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         OpenMenu();
+        Debug.Log("active=" + active);
+        Debug.Log("objcheck=" + objcheck);
 		
 	}
     void OpenMenu() {
@@ -37,10 +39,11 @@ public class UnitMenu : MonoBehaviour {
                 if (active == false)
                 {
                     u_menu.SetActive(true);
+                    active = true;
                     if (unit.gameObject.tag == "WizardUnit") {
                         w_menu.SetActive(true);
 
-                        active = true;
+                      
 
                     }
                    
@@ -61,8 +64,9 @@ public class UnitMenu : MonoBehaviour {
             {
                 if (active == true)
                 {
+                   
                     u_menu.SetActive(false);
-                    drower.GetComponent<UnitMove_sin>().enabled = true;
+                   
                     active = false;
                 }
                 
