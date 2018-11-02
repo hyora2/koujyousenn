@@ -5,9 +5,11 @@ using UnityEngine;
 public class Cure : MonoBehaviour {
 
 	public GameObject unitmenu;
+    public GameObject point;
+    public GameObject unit;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
         
 
 		
@@ -19,8 +21,10 @@ public class Cure : MonoBehaviour {
 	}
     public void ButtonPush()
     {
-
-		unitmenu.SetActive(false);
+        point = GameObject.FindWithTag("PointCount");
+        point.GetComponent<PointCont>().Point -= 10;
+        unit.GetComponent<UnitStatus>().unitHp += 50;
+        unitmenu.SetActive(false);
         Debug.Log("cure");
 
        

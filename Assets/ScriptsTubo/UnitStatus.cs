@@ -15,11 +15,14 @@ public class UnitStatus : MonoBehaviour {
 	private Rigidbody2D rb;
 	private PointCont point;
 
+    int HPMax;
+
     // Use this for initialization
     void Start()
     {
 		rb = GetComponent<Rigidbody2D>();
 		point = GameObject.Find("GameSystem").GetComponent<PointCont>();
+        HPMax = unitHp;
     }
 
 	// Update is called once per frame
@@ -33,5 +36,8 @@ public class UnitStatus : MonoBehaviour {
 				point.PGet(getscore);
 			}
 		}
+        if (unitHp>HPMax) {
+            unitHp = HPMax;
+        }
 	}
 }
