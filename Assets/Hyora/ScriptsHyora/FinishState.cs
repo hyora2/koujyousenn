@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 
 public class FinishState : MonoBehaviour {
-
+    public string GameOver;
     public GameObject Font;
 
     public GameObject Pbase;    //Pbase:プレイヤー側の拠点
@@ -16,7 +16,6 @@ public class FinishState : MonoBehaviour {
     private int EbaseHP;
 
     void Start(){
-
         Pbase = GameObject.FindWithTag("PlayerBase");
         Ebase = GameObject.FindWithTag("EnemyBase");
   
@@ -26,6 +25,7 @@ public class FinishState : MonoBehaviour {
     }
 
     void Update(){
+        
         PbaseHP = Pbase.GetComponent<BaseStatus>().BaseHP;
         EbaseHP = Ebase.GetComponent<BaseStatus>().BaseHP;
 
@@ -41,8 +41,6 @@ public class FinishState : MonoBehaviour {
             Debug.Log(PbaseHP);
             Debug.Log(EbaseHP);
         }
-
-
     }
 
    /// <summary>
@@ -57,12 +55,15 @@ public class FinishState : MonoBehaviour {
         if(winSide == 0){
             //0 : プレイヤー側が勝利したときの処理。
 
-            SceneManager.LoadScene("");     //シーン名の記入をお願いします
+                SceneManager.LoadScene("GameClear");     //シーン名の記入
+
+               //シーン名の記入をお願いします
             
         }else if(winSide == 1){
             //1 : 敵側が勝ち。ゲームオーバー処理。
+               
+                SceneManager.LoadScene("GameOver");     //シーン名の記入
 
-            SceneManager.LoadScene("");     //シーン名の記入
             
         }else {
             Debug.Log("Error.");
@@ -76,6 +77,4 @@ public class FinishState : MonoBehaviour {
     IEnumerator wait(float time){
         yield return new WaitForSeconds(time);
     }
-
-
 }
