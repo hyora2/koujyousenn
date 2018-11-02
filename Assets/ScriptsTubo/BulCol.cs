@@ -6,6 +6,8 @@ public class BulCol : MonoBehaviour {
 
 	private UnitStatus unitStatus;
 	private SpriteRenderer damage;
+	[SerializeField]
+	private float wait;
 
 	// Use this for initialization
 	void Start () {
@@ -27,16 +29,19 @@ public class BulCol : MonoBehaviour {
 		if (collision.gameObject.tag == "Unit")
 		{
 			UnitStatus status = collision.gameObject.GetComponent<UnitStatus>();
-			status.unitHp -= unitStatus.unitPower;
-			damage.enabled = true;
-			StartCoroutine("Span");
+			if (status != null && unitStatus != null)
+			{
+				status.unitHp -= unitStatus.unitPower;
+				damage.enabled = true;
+				StartCoroutine("Span");
+			}
 		}
 	}
 
 	private IEnumerator Span()
 	{
 
-		yield return new WaitForSeconds(0.5f);
+		yield return new WaitForSeconds(wait);
 
 		damage.enabled = false;
 	}

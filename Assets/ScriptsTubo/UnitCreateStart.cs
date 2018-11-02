@@ -24,7 +24,7 @@ public class UnitCreateStart : MonoBehaviour {
 		Vector3 unitPos = new Vector3(vx, vy, 0f); //生成するユニットの位置
 		while (Enemy[9] == null)
 		{
-			vy = 1f;
+			vy = 2f;
 			while (i < size)
 			{
 				unitPos = new Vector3(vx, vy, 0f); //生成するユニットの位置
@@ -60,7 +60,7 @@ public class UnitCreateStart : MonoBehaviour {
 		vx = -3f;
 		while (Player[9] == null)
         {
-            vy = -2f;
+            vy = -3f;
             while (i < size)
             {
                 unitPos = new Vector3(vx, vy, 0f); //生成するユニットの位置

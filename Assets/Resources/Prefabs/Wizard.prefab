@@ -390,8 +390,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1841966312750830}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -324, y: -235.5, z: 0}
-  m_LocalScale: {x: 62.991093, y: 62.991093, z: 62.991093}
+  m_LocalPosition: {x: -400, y: -235.5, z: 0}
+  m_LocalScale: {x: 62.99109, y: 62.99109, z: 62.991093}
   m_Children:
   - {fileID: 4924591243513456}
   - {fileID: 4505056716112684}
@@ -574,6 +574,7 @@ MonoBehaviour:
   w_menu: {fileID: 1680084100682100}
   u_menu: {fileID: 1521088976712644}
   drower: {fileID: 1593743508108004}
+  active: 0
 --- !u!114 &114040496248579354
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -679,8 +680,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cbutton: {fileID: 1450820456308166}
-  unitmenu: {fileID: 0}
-  unit: {fileID: 0}
+  unitmenu: {fileID: 1521088976712644}
+  unit: {fileID: 1841966312750830}
+  drower: {fileID: 1593743508108004}
+  Ui_unit: {fileID: 1566102507990798}
   modeChange: {fileID: 114130590443661356}
 --- !u!114 &114214764132241200
 MonoBehaviour:
@@ -990,9 +993,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11f3798acf9c94059b2b18ab97561622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitHp: 70
-  unitPower: 10
-  unitHealingpower: 5
+  unitHp: 170
+  unitPower: 15
+  unitHealingpower: 10
   unitspeed: 0.01
   unitCheck: 1
   getscore: 0
@@ -1008,8 +1011,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cbutton: {fileID: 1330309381927450}
-  unitmenu: {fileID: 0}
-  unit: {fileID: 0}
+  unitmenu: {fileID: 1521088976712644}
+  unit: {fileID: 1841966312750830}
+  drower: {fileID: 1593743508108004}
+  Ui_unit: {fileID: 1566102507990798}
   modeChange: {fileID: 114130590443661356}
 --- !u!114 &114575255518332636
 MonoBehaviour:
@@ -1022,9 +1027,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cecb4f0f71e17b40a0d282560cc71a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitmenu: {fileID: 0}
-  point: {fileID: 0}
-  unit: {fileID: 0}
+  unitmenu: {fileID: 1521088976712644}
+  unit: {fileID: 1841966312750830}
+  drower: {fileID: 1593743508108004}
+  Ui_unit: {fileID: 1566102507990798}
 --- !u!114 &114589791674679398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1115,9 +1121,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b21c5a529a9c48546b17bc85f4ffdd85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitmenu: {fileID: 0}
-  point: {fileID: 0}
-  unit: {fileID: 0}
+  unitmenu: {fileID: 1521088976712644}
+  unit: {fileID: 1841966312750830}
+  drower: {fileID: 1593743508108004}
+  Ui_unit: {fileID: 1566102507990798}
 --- !u!114 &114701439487091212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1184,7 +1191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee3fadd4142de4682b79951f5b937b1f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Bullet: {fileID: 1956474016855548, guid: d6cf7c5a69ba84756825562588ce9fb0, type: 2}
+  Bullet: {fileID: 1895858026996192, guid: 92fefc9a6aca94a959ac534c03a11ef6, type: 2}
   bulletPos: {fileID: 4767408667113590}
   bulletSpeed: 5
 --- !u!114 &114958312600426604
@@ -1410,7 +1417,7 @@ SpriteRenderer:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1658396848301154}
-  m_Enabled: 1
+  m_Enabled: 0
   m_CastShadows: 0
   m_ReceiveShadows: 0
   m_DynamicOccludee: 1
