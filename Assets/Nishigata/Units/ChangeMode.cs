@@ -7,10 +7,10 @@ public class ChangeMode : MonoBehaviour {
    
     public GameObject Cbutton;
 	public GameObject unitmenu;
-
-	//private GameObject Root;
+    public GameObject unit;
+    //private GameObject Root;
     //private GameObject magicunit;
-	[SerializeField]
+    [SerializeField]
 	private MagicModeChange modeChange;
 
     // Use this for initialization
@@ -36,15 +36,17 @@ public class ChangeMode : MonoBehaviour {
 	}
     public void ButtonPushC()
     {
-		//modeChange.save = true;
-		//modeChange.attacking = false;
+        //modeChange.save = true;
+        //modeChange.attacking = false;
+        unit.GetComponent<ModeSwich>().modeChange.attacking =false;
 		unitmenu.SetActive(false);
 		Debug.Log("Heal");
 		//modeChange.Changed(2);
     }
     public void ButtonPushA() {
-		//modeChange.save = true;
-		//modeChange.attacking = true;
+        //modeChange.save = true;
+        //modeChange.attacking = true;
+        unit.GetComponent<ModeSwich>().modeChange.attacking = true;
 		unitmenu.SetActive(false);
 		Debug.Log("Attack");
 		//modeChange.Changed(1);

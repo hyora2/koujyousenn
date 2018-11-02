@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class ModeSwich : MonoBehaviour {
-   public bool Attack;
-    public bool Cure;
+   public bool Attack=false;
+    public bool Cure=false;
     public GameObject a;
     public GameObject c;
 
 	[SerializeField]
-	private MagicModeChange modeChange;
+	public MagicModeChange modeChange;
 
 	// Use this for initialization
 	void Start () {
