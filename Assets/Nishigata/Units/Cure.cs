@@ -10,6 +10,9 @@ public class Cure : MonoBehaviour {
     public GameObject drower;
     public GameObject Ui_unit;
 
+    public int UsePoint= 10;
+    public int AddHP = 50;
+
     // Use this for initialization
     void Start () {
         
@@ -24,8 +27,8 @@ public class Cure : MonoBehaviour {
     public void ButtonPush()
     {
         point = GameObject.FindWithTag("PointCount");
-        point.GetComponent<PointCont>().Point -= 10;
-        unit.GetComponent<UnitStatus>().unitHp += 50;
+        point.GetComponent<PointCont>().Point -= UsePoint;
+        unit.GetComponent<UnitStatus>().unitHp += AddHP;
         drower.GetComponent<UnitMove_sin>().enabled = true;
         Ui_unit.GetComponent<UnitMenu>().active = false;
         unitmenu.SetActive(false);

@@ -12,6 +12,7 @@ TagManager:
   - C_Mode
   - A_Mode
   - PointCount
+  - image
   layers:
   - Default
   - TransparentFX

@@ -37,6 +37,7 @@ public class UnitMove_sin : MonoBehaviour {
     public GameObject unit;
     public GameObject ui_unit;
     public GameObject arrow;
+    public GameObject image;
 
     bool delete;
 
@@ -74,7 +75,7 @@ public class UnitMove_sin : MonoBehaviour {
     //float Ldfdragtime = 0.1f;
     float dragtime = 1f;//右ドラッグ時間
     bool Ldragtime = false;//左ドラッグ時間
-   
+    bool imagescale=false;
 
    
 
@@ -144,9 +145,25 @@ public class UnitMove_sin : MonoBehaviour {
         {
             Move();
         }
-      
-        
-        if(drow_now==false&&listcount==mousePosList.Count||delete==true){
+
+        if (imagescale==false&&((unit.transform.localEulerAngles.z>=-180&& unit.transform.localEulerAngles.z <= -90 )||(unit.transform.localEulerAngles.z<=180&& unit.transform.localEulerAngles.z >= 90)))
+        {
+            
+                Vector3 scale = image.transform.localScale;
+                scale.x *= -1;
+                image.transform.localScale = scale;
+                imagescale = true;
+            
+        }
+        else if (imagescale == true && ((unit.transform.localEulerAngles.z<=0&&unit.transform.localEulerAngles.z >= -90) ||(unit.transform.localEulerAngles.z>=0&&unit.transform.localEulerAngles.z <= 90))) {
+            Vector3 scale = image.transform.localScale;
+            scale.x *= -1;
+            image.transform.localScale = scale;
+            imagescale = false;
+        }
+        Debug.Log("imagescal=" + imagescale);
+
+        if (drow_now==false&&listcount==mousePosList.Count||delete==true){
             //ここでdrow_nowの判定をしないとlistcountが増えない。
             goal = true;
             moving = false;
