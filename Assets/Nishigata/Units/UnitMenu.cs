@@ -39,6 +39,11 @@ public class UnitMenu : MonoBehaviour {
                     u_menu.SetActive(true);
                     if (unit.gameObject.tag == "WizardUnit") {
                         w_menu.SetActive(true);
+						GameObject Attack = transform.Find("unitmenu/W_Menu/AttackMode").gameObject;
+						ChangeMode changeModeA = Attack.GetComponent<ChangeMode>();
+						GameObject Cure = transform.Find("unitmenu/W_Menu/CureMode").gameObject;
+						ChangeMode changeModeC = Cure.GetComponent<ChangeMode>();
+
                         
                     }
                     active = true;

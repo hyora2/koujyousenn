@@ -7,9 +7,9 @@ public class ChangeMode : MonoBehaviour {
    
     public GameObject Cbutton;
 
-	private GameObject Root;
-    private GameObject magicunit;
-
+	//private GameObject Root;
+    //private GameObject magicunit;
+	[SerializeField]
 	private MagicModeChange modeChange;
 
     // Use this for initialization
@@ -23,10 +23,10 @@ public class ChangeMode : MonoBehaviour {
             ButtonPushA();
         }*/
         
-		Root = transform.root.gameObject;
-        magicunit = Root.transform.Find("MagicUnit").gameObject;
+		//Root = transform.root.gameObject;
+        //magicunit = Root.transform.Find("MagicUnit").gameObject;
 
-        modeChange = magicunit.GetComponent<MagicModeChange>();
+        //modeChange = magicunit.GetComponent<MagicModeChange>();
     }
 	
 	// Update is called once per frame
@@ -37,11 +37,13 @@ public class ChangeMode : MonoBehaviour {
     {
 		//modeChange.save = true;
 		//modeChange.attacking = false;
-		modeChange.Changed(2);
+		Debug.Log("Cure");
+		//modeChange.Changed(2);
     }
     public void ButtonPushA() {
 		//modeChange.save = true;
 		//modeChange.attacking = true;
-		modeChange.Changed(1);
+		Debug.Log("Attack");
+		//modeChange.Changed(1);
     }
 }

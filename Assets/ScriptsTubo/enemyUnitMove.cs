@@ -73,12 +73,14 @@ public class enemyUnitMove : MonoBehaviour {
 			if (rotN1 == true)
 			{
 				rotN1 = false;
-				if (unitTag % 2 == 0)
+				canMove = false;
+				if (unitTag % 2 == 1)
                 {
 					//unitCreateStart.Enemy[i].transform.LookAt(Neutral1.transform);
 					var vec = (Neutral1.transform.position - transform.position).normalized;
 					var angle = (Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg) - 90.0f;
 					transform.rotation = Quaternion.Euler(0f, 0f, angle);
+					canMove = true;
                 }
 			}
 		}
@@ -87,14 +89,16 @@ public class enemyUnitMove : MonoBehaviour {
 			if (rotN2 == true)
 			{
 				rotN2 = false;
-				if (unitTag % 2 == 0)
+				canMove = false;
+				if (unitTag % 2 == 1)
                 {
 					//unitCreateStart.Enemy[i].transform.LookAt(Neutral2.transform);
 					var vec = (Neutral2.transform.position - transform.position).normalized;
                     var angle = (Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg) - 90.0f;
                     transform.rotation = Quaternion.Euler(0f, 0f, angle);
+					canMove = true;
                 }
-				canMove = true;
+				//canMove = true;
 			}
 		}
         //中立の拠点がどちらもプレイヤーの拠点だった場合守りに徹する
@@ -104,19 +108,19 @@ public class enemyUnitMove : MonoBehaviour {
 			if (rot == true)
 			{
 				rot = false;
-
+				canMove = true;
                 //unitCreateStart.Enemy[i].transform.LookAt(enemyBase.transform);
 				var vec = (enemyBase.transform.position - transform.position).normalized;
                 var angle = (Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg) - 90.0f;
                 transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
-				canMove = true;
+				//canMove = true;
 			}
             //敵の拠点周辺にたどり着いたらプレイヤーの拠点側を向く
 			if (rotP == true)
 			{
 				rotP = false;
-
+				canMove = false;
 				//unitCreateStart.Enemy[i].transform.LookAt(playerBase.transform);
 				var vec = (playerBase.transform.position - transform.position).normalized;
                 var angle = (Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg) - 90.0f;
@@ -130,14 +134,16 @@ public class enemyUnitMove : MonoBehaviour {
 			if (rot == true)
 			{
 				rot = false;
-				if (unitTag % 2 == 0)
-                {
-                    //unitCreateStart.Enemy[i].transform.LookAt(playerBase.transform);
+				canMove = false;
+				if (unitTag % 2 == 1)
+				{
+					//unitCreateStart.Enemy[i].transform.LookAt(playerBase.transform);
 					var vec = (playerBase.transform.position - transform.position).normalized;
-                    var angle = (Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg) - 90.0f;
-                    transform.rotation = Quaternion.Euler(0f, 0f, angle);
-                }
-				canMove = true;
+					var angle = (Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg) - 90.0f;
+					transform.rotation = Quaternion.Euler(0f, 0f, angle);
+					canMove = true;
+				}
+				//canMove = true;
 			}
 		}
         //中立の拠点が両方とも敵の拠点だった場合攻めに徹する
@@ -146,13 +152,13 @@ public class enemyUnitMove : MonoBehaviour {
             if (rot == true)
 			{
 				rot = false;
-
+				canMove = true;
 				//unitCreateStart.Enemy[i].transform.LookAt(playerBase.transform);
 				var vec = (playerBase.transform.position - transform.position).normalized;
                 var angle = (Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg) - 90.0f;
                 transform.rotation = Quaternion.Euler(0f, 0f, angle);
 
-				canMove = true;
+				//canMove = true;
 			}
         }
 	}

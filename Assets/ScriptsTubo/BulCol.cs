@@ -16,9 +16,6 @@ public class BulCol : MonoBehaviour {
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
-		if (collision.gameObject.tag == "Unit")
-		{
-			Destroy(gameObject);
-		}
+		Destroy(gameObject);
 	}
 }
