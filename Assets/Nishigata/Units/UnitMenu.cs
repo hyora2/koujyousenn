@@ -9,7 +9,7 @@ public class UnitMenu : MonoBehaviour {
     public GameObject drower;
 
     bool objcheck=true;
-    bool active=false;
+    public bool active=false;
     
     
 
@@ -58,16 +58,31 @@ public class UnitMenu : MonoBehaviour {
             Collider2D aCollider2d = Physics2D.OverlapPoint(aTapPoint);
             Debug.Log("collider=" + aCollider2d);
 
-			if (aCollider2d.gameObject == u_menu) { objcheck = true; }
-            else { objcheck = false; }
+            if(aCollider2d == null)
+            {
+                Debug.Log("null dayo ");
+                objcheck = false;
+            }
+            else
+            {
+                if (aCollider2d.gameObject == u_menu)
+                {
+                    objcheck = true;
+                }
+
+            }
+          
+
             if (objcheck==false)
             {
-                //Debug.Log("Oha");
+                Debug.Log("Oha");
+
                 if (active == true)
                 {
                     Debug.Log("hallo");
-                    active = false;
+                    
                     u_menu.SetActive(false);
+                    active = false;
                     drower.GetComponent<UnitMove_sin>().enabled = true;
 
                 }

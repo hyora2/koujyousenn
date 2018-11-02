@@ -604,6 +604,8 @@ MonoBehaviour:
   unitmenu: {fileID: 1971798995741346}
   point: {fileID: 0}
   unit: {fileID: 1124262344081602}
+  drower: {fileID: 1165708545617254}
+  Ui_unit: {fileID: 1877628315235764}
 --- !u!114 &114240507295969362
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -864,6 +866,8 @@ MonoBehaviour:
   Cbutton: {fileID: 1193759851327796}
   unitmenu: {fileID: 1971798995741346}
   unit: {fileID: 1124262344081602}
+  drower: {fileID: 1165708545617254}
+  Ui_unit: {fileID: 1877628315235764}
   modeChange: {fileID: 0}
 --- !u!114 &114572439392718494
 MonoBehaviour:
@@ -896,6 +900,7 @@ MonoBehaviour:
   w_menu: {fileID: 1939123884867102}
   u_menu: {fileID: 1971798995741346}
   drower: {fileID: 1165708545617254}
+  active: 0
 --- !u!114 &114665505857861986
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -937,6 +942,8 @@ MonoBehaviour:
   unitmenu: {fileID: 1971798995741346}
   point: {fileID: 0}
   unit: {fileID: 1124262344081602}
+  drower: {fileID: 1165708545617254}
+  Ui_unit: {fileID: 1877628315235764}
 --- !u!114 &114877018283078326
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -951,6 +958,8 @@ MonoBehaviour:
   Cbutton: {fileID: 1197094373666354}
   unitmenu: {fileID: 1971798995741346}
   unit: {fileID: 1124262344081602}
+  drower: {fileID: 1165708545617254}
+  Ui_unit: {fileID: 1877628315235764}
   modeChange: {fileID: 0}
 --- !u!114 &114903807602035230
 MonoBehaviour:

@@ -7,6 +7,7 @@ public class Strenghten : MonoBehaviour {
     public GameObject point;
     public GameObject unit;
     public GameObject drower;
+    public GameObject Ui_unit;
     // Use this for initialization
     void Start () {
         
@@ -23,6 +24,7 @@ public class Strenghten : MonoBehaviour {
         point.GetComponent<PointCont>().Point -= 20;
         unit.GetComponent<UnitStatus>().unitPower += 20;
         drower.GetComponent<UnitMove_sin>().enabled = true;
+        Ui_unit.GetComponent<UnitMenu>().active = false;
         unitmenu.SetActive(false);
 
 

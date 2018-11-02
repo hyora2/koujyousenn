@@ -8,6 +8,7 @@ public class Cure : MonoBehaviour {
     public GameObject point;
     public GameObject unit;
     public GameObject drower;
+    public GameObject Ui_unit;
 
     // Use this for initialization
     void Start () {
@@ -26,6 +27,7 @@ public class Cure : MonoBehaviour {
         point.GetComponent<PointCont>().Point -= 10;
         unit.GetComponent<UnitStatus>().unitHp += 50;
         drower.GetComponent<UnitMove_sin>().enabled = true;
+        Ui_unit.GetComponent<UnitMenu>().active = false;
         unitmenu.SetActive(false);
         Debug.Log("cure");
 
