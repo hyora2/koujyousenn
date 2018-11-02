@@ -143,7 +143,7 @@ GameObject:
   - component: {fileID: 4927010515334066}
   - component: {fileID: 212326708002347434}
   m_Layer: 0
-  m_Name: "\u68D2\u4EBA\u9593"
+  m_Name: "\u6B69\u5175"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -452,9 +452,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.2495869}
   serializedVersion: 2
-  m_Radius: 0.5
+  m_Radius: 0.59195364
 --- !u!61 &61228853189303986
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -819,6 +819,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9cecb4f0f71e17b40a0d282560cc71a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitmenu: {fileID: 0}
 --- !u!114 &114628425365046748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1225,7 +1226,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 426672cb68c072a49a60bda34fc2bfca, type: 3}
+  m_Sprite: {fileID: 21300000, guid: de443105c791c49fa93280625a3a42c7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
