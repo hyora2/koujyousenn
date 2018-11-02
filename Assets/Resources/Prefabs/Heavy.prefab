@@ -41,6 +41,8 @@ GameObject:
   - component: {fileID: 58795526855150088}
   - component: {fileID: 50773063171100000}
   - component: {fileID: 114460430100691008}
+  - component: {fileID: 114390174451526926}
+  - component: {fileID: 58477994999686594}
   m_Layer: 0
   m_Name: unit
   m_TagString: Unit
@@ -423,6 +425,21 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!58 &58477994999686594
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1129055373635896}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 1.3
 --- !u!58 &58795526855150088
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -508,6 +525,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cbutton: {fileID: 1087873026560732}
+  unitmenu: {fileID: 0}
   modeChange: {fileID: 0}
 --- !u!114 &114131826185348182
 MonoBehaviour:
@@ -589,6 +607,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cbutton: {fileID: 1184461117676296}
+  unitmenu: {fileID: 0}
   modeChange: {fileID: 0}
 --- !u!114 &114244690131926954
 MonoBehaviour:
@@ -683,7 +702,7 @@ MonoBehaviour:
   lineObj: {fileID: 1141418370373764, guid: 90fd33bc43cfe2d40ade7e8069556052, type: 2}
   lineLimit: 10
   deleteSoon: 0
-  linestraight: 1
+  linestraight: 0
   deleteTime: 30
   unit: {fileID: 1129055373635896}
   ui_unit: {fileID: 1369472143073510}
@@ -759,6 +778,18 @@ MonoBehaviour:
   a: {fileID: 1184461117676296}
   c: {fileID: 1087873026560732}
   modeChange: {fileID: 0}
+--- !u!114 &114390174451526926
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1129055373635896}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 154f4e6c0f27e4f15829503f7fdc1e9b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  range: 1.3
 --- !u!114 &114423877190493474
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1006,6 +1037,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b21c5a529a9c48546b17bc85f4ffdd85, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitmenu: {fileID: 0}
 --- !u!114 &114912529176897460
 MonoBehaviour:
   m_ObjectHideFlags: 1

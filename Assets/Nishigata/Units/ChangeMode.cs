@@ -6,6 +6,7 @@ public class ChangeMode : MonoBehaviour {
     bool mode;
    
     public GameObject Cbutton;
+	public GameObject unitmenu;
 
 	//private GameObject Root;
     //private GameObject magicunit;
@@ -37,12 +38,14 @@ public class ChangeMode : MonoBehaviour {
     {
 		//modeChange.save = true;
 		//modeChange.attacking = false;
-		Debug.Log("Cure");
+		unitmenu.SetActive(false);
+		Debug.Log("Heal");
 		//modeChange.Changed(2);
     }
     public void ButtonPushA() {
 		//modeChange.save = true;
 		//modeChange.attacking = true;
+		unitmenu.SetActive(false);
 		Debug.Log("Attack");
 		//modeChange.Changed(1);
     }
