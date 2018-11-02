@@ -31,9 +31,10 @@ GameObject:
   - component: {fileID: 114098987229453074}
   - component: {fileID: 120418995068338704}
   - component: {fileID: 61589184325556716}
+  - component: {fileID: 114908451094108066}
   m_Layer: 0
   m_Name: MagicUnit
-  m_TagString: Undefined
+  m_TagString: Unit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -218,6 +219,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4989c5f38e5043738a0041cd59a45ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  swich: {fileID: 0}
 --- !u!114 &114098987229453074
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -265,12 +267,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11f3798acf9c94059b2b18ab97561622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitHp: 0
-  unitPower: 0
-  unitHealingpower: 0
-  unitspeed: 0
+  unitHp: 20
+  unitPower: 10
+  unitHealingpower: 10
+  unitspeed: 0.01
   unitCheck: 0
   getscore: 0
+--- !u!114 &114908451094108066
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1573110661929982}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7ec85c3e531c4797821381ae08bfa58, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!120 &120418995068338704
 LineRenderer:
   m_ObjectHideFlags: 1

@@ -9,6 +9,7 @@ public class MagicModeChange : MonoBehaviour {
 
 	private MagicAttackMode attackMode;
 	private MagicHealMode healMode;
+	[SerializeField]
 	private ModeSwich swich;
 
 	private GameObject Root;
@@ -68,11 +69,25 @@ public class MagicModeChange : MonoBehaviour {
 		if (changenum == 1)
         {
 			//save = false;
+			//attacking = true;
+			UnitStatus status = GetComponent<UnitStatus>();
+			if (status == null)
+			{
+				swich.Attack = false;
+                swich.Cure = true;
+			}
             attackMode.Attack();
         }
 		else if (changenum == 2)
         {
 			//save = false;
+			//attacking = false;
+			UnitStatus status = GetComponent<UnitStatus>();
+			if (status == null)
+			{
+				swich.Attack = true;
+				swich.Cure = false;
+			}
             healMode.Heal();
         }
 		Debug.Log("name = " + gameObject.name + ", num = " + changenum);
