@@ -196,10 +196,13 @@ public class UnitMove_sin : MonoBehaviour {
             {
                 indexCount++;
                 Color rand = new Color(Random.value, Random.value, Random.value, 1.0f);
+                Debug.Log(rand);
                 lineLength.Add(Instantiate(lineObj));
                 activeLine.Add(lineLength[indexCount].GetComponent<Line>());
-                activeLine[indexCount].GetComponent<Renderer>().material.color = rand;
-                
+                // activeLine[indexCount].GetComponent<Renderer>().material.color = rand;
+                // activeLine[indexCount].GetComponent<LineRenderer>().SetColors(rand,rand);
+                activeLine[indexCount].GetComponent<LineRenderer>().startColor = rand;
+                activeLine[indexCount].GetComponent<LineRenderer>().endColor = rand;
 
                 GameObject obj = aCollider2d.transform.gameObject;
                 //Debug.Log("obj="+obj.name);
