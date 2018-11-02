@@ -7,7 +7,8 @@ public class UnitCreateStart : MonoBehaviour {
 	public GameObject[] Enemy { get; private set; }//敵
 	public GameObject[] Player { get; private set; }//プレイヤー
 
-	public GameObject[] EnemyKind; //0から順に歩兵、重装兵、騎馬兵、弓兵、魔法兵のプレハブをセットする（プレイヤーユニットの種類も同じ　名付けミス）
+	public GameObject[] EnemyKind; //0から順に歩兵、重装兵、騎馬兵、弓兵、魔法兵のプレハブをセットする
+	public GameObject[] PlayerKind; //上に同じ
 	public int Enecount { get; set; } //敵の魔法兵のカウント
 
 	// Use this for initialization
@@ -28,8 +29,8 @@ public class UnitCreateStart : MonoBehaviour {
 			{
 				unitPos = new Vector3(vx, vy, 0f); //生成するユニットの位置
 				Enemy[i] = Instantiate(EnemyKind[j], unitPos, Quaternion.Euler(0f, 0f, 180f)) as GameObject; //プレイヤーの方を向き生成
-				Enemy[i].AddComponent<enemyUnitMove>(); //敵が移動できるようにする
-				enemyUnitMove move = GetComponent<enemyUnitMove>();
+				//Enemy[i].AddComponent<enemyUnitMove>(); //敵が移動できるようにする
+				enemyUnitMove move = Enemy[i].GetComponent<enemyUnitMove>();
 				move.unitTag = i + 1;
 				UnitStatus unitStatus = Enemy[i].GetComponent<UnitStatus>();
 				unitStatus.unitCheck = false;
@@ -63,18 +64,16 @@ public class UnitCreateStart : MonoBehaviour {
             while (i < size)
             {
                 unitPos = new Vector3(vx, vy, 0f); //生成するユニットの位置
-				Player[i] = Instantiate(EnemyKind[j], unitPos, Quaternion.identity) as GameObject;
-                UnitStatus unitStatus = Player[i].GetComponent<UnitStatus>();
-                unitStatus.unitCheck = true;
+				Player[i] = Instantiate(PlayerKind[j], unitPos, Quaternion.identity) as GameObject;
 
                 if (size == 10)
                 {
-					MagicModeChange modeChange = Player[i].GetComponent<MagicModeChange>();
+					MagicModeChange modeChange = Player[i].transform.Find("Ui&Unit/unit").gameObject.GetComponent<MagicModeChange>();
                     if (modeChange != null)
                     {
                         modeChange.attacking = true;
                     }
-                    StartCoroutine(comp(Player[i]));
+                    //StartCoroutine(comp(Player[i]));
                 }
 
                 vy -= 1.5f;

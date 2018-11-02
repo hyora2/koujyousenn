@@ -13,6 +13,12 @@ public class BulletCollision : MonoBehaviour {
 		//int magicFind = unitCreateStart.Objname(gameObject);
 		//magicunitstatus = GameObject.Find("MagicUnit" + magicFind).GetComponent<UnitStatus>(); //複数体いるので、名前を変えるなどして区別する
 		magicunitstatus = transform.root.gameObject.GetComponent<UnitStatus>();
+		if (magicunitstatus == null)
+		{
+			GameObject Wizard = transform.root.gameObject;
+            GameObject wizunit = Wizard.transform.Find("Ui&Unit/unit").gameObject;
+            magicunitstatus = wizunit.GetComponent<UnitStatus>();
+		}
 		Destroy(gameObject, 2f);
 	}
 	

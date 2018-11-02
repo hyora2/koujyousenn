@@ -15,16 +15,21 @@ public class BaseStatus : MonoBehaviour {
 
 	public int getpoint; //中立の拠点を獲得した際に得られるポイントの量(獲得量は２つの拠点で同じにすること)
 
+	private bool occu; //どちらかが占拠したら生成出来ないようにする
 	private BaseManager baseManager;
 	private UnitCreateStart unitCreateStart;
 	private PointCont point;
 
+	private CircleCollider2D circle;
+
 	// Use this for initialization
 	void Start () {
 		neut = 0;
+		occu = true;
 		baseManager = GameObject.Find("BaseManager").GetComponent<BaseManager>();
 		unitCreateStart = GameObject.Find("GameSystem").GetComponent<UnitCreateStart>();
 		point = GameObject.Find("GameSystem").GetComponent<PointCont>();
+		circle = GetComponent<CircleCollider2D>();
 	}
 	
 	// Update is called once per frame
@@ -36,58 +41,134 @@ public class BaseStatus : MonoBehaviour {
 	{
 		//ダメージ判定
 		UnitStatus status = collision.gameObject.GetComponent<UnitStatus>();
-		string tagstr = collision.gameObject.tag;
-        bool isUnit = tagstr.Contains("Unit");
+		if (status != null)
+		{
+			string tagstr = collision.gameObject.tag;
+			bool isUnit = tagstr.Contains("Unit");
 
-		if (isUnit == true && status.unitCheck == false && BaseTag == 1)
-		{
-			BaseHP -= status.unitPower;
-		}
-		else if (isUnit == true && status.unitCheck == false && BaseTag == 2)
-		{
-			BaseHP -= status.unitPower;
-		}
-		else if (isUnit == true && BaseTag == 3)
-		{
-			BaseHP -= status.unitPower;
-			//中立拠点がプレイヤーもしくは敵の拠点になるかどうか判定
-			if (BaseHP <= 0)
+			if (isUnit == true && status.unitCheck == false && BaseTag == 1)
 			{
-				if (status.unitCheck == true)
+				BaseHP -= status.unitPower;
+			}
+			else if (isUnit == true && status.unitCheck == true && BaseTag == 2)
+			{
+				BaseHP -= status.unitPower;
+			}
+			else if (isUnit == true && BaseTag == 3)
+			{
+				BaseHP -= status.unitPower;
+				//中立拠点がプレイヤーもしくは敵の拠点になるかどうか判定
+				if (BaseHP <= 0 && occu == true)
 				{
-					neut = 1;
-					baseManager.playerbaseCount++;
-					point.PGet(getpoint);
-					BaseP(gameObject);
+					occu = false;
+					if (status.unitCheck == true)
+					{
+						neut = 1;
+						baseManager.playerbaseCount++;
+						circle.radius = 0f;
+						point.PGet(getpoint);
+						BaseP(gameObject);
+					}
+					else if (status.unitCheck == false)
+					{
+						neut = 2;
+						circle.radius = 0f;
+						BaseE(gameObject);
+					}
 				}
-				else if (status.unitCheck == false)
+			}
+			else if (isUnit == true && BaseTag == 4)
+			{
+				BaseHP -= status.unitPower;
+				//中立拠点がプレイヤーもしくは敵の拠点になるかどうか判定
+				if (BaseHP <= 0 && occu == true)
 				{
-					neut = 2;
-					BaseE(gameObject);
+					occu = false;
+					if (status.unitCheck == true)
+					{
+						neut = 1;
+						baseManager.playerbaseCount++;
+						circle.radius = 0f;
+						point.PGet(getpoint);
+						BaseP(gameObject);
+					}
+					else if (status.unitCheck == false)
+					{
+						neut = 2;
+						circle.radius = 0f;
+						BaseE(gameObject);
+					}
 				}
 			}
 		}
-		else if (isUnit == true && BaseTag == 4)
+		else if (collision.gameObject.tag == "Bullet")
 		{
-			UnitStatus unitStatus = collision.gameObject.GetComponent<UnitStatus>();
-			BaseHP -= unitStatus.unitPower;
-			//中立拠点がプレイヤーもしくは敵の拠点になるかどうか判定
-			if (BaseHP <= 0)
-            {
-				if (status.unitCheck == true)
-                {
-                    neut = 1;
-					baseManager.playerbaseCount++;
-					point.PGet(getpoint);
-					BaseP(gameObject);
-                }
-				else if (status.unitCheck == false)
-                {
-                    neut = 2;
-					BaseE(gameObject);
-                }
-            }
+			UnitStatus Bstatus = collision.transform.root.gameObject.GetComponent<UnitStatus>();
+			if (Bstatus == null)
+			{
+				GameObject unit = collision.gameObject.transform.root.gameObject;
+				GameObject bul = unit.transform.Find("Ui&Unit/unit").gameObject;
+				Bstatus = bul.GetComponent<UnitStatus>();
+			}
+			if (Bstatus != null)
+			{
+				if (Bstatus.unitCheck == false && BaseTag == 1)
+				{
+					BaseHP -= Bstatus.unitPower;
+				}
+				else if (Bstatus.unitCheck == true && BaseTag == 2)
+				{
+					BaseHP -= Bstatus.unitPower;
+				}
+				else if (BaseTag == 3)
+				{
+					BaseHP -= Bstatus.unitPower;
+					//中立拠点がプレイヤーもしくは敵の拠点になるかどうか判定
+					if (BaseHP <= 0 && occu == true)
+					{
+						occu = false;
+						if (Bstatus.unitCheck == true)
+						{
+							neut = 1;
+							baseManager.playerbaseCount++;
+							circle.radius = 0f;
+							point.PGet(getpoint);
+							BaseP(gameObject);
+						}
+						else if (Bstatus.unitCheck == false)
+						{
+							neut = 2;
+							circle.radius = 0f;
+							BaseE(gameObject);
+						}
+					}
+				}
+				else if (BaseTag == 4)
+				{
+					BaseHP -= Bstatus.unitPower;
+					//中立拠点がプレイヤーもしくは敵の拠点になるかどうか判定
+					if (BaseHP <= 0 && occu == true)
+					{
+						if (Bstatus.unitCheck == true)
+						{
+							occu = false;
+							neut = 1;
+							baseManager.playerbaseCount++;
+							circle.radius = 0f;
+							point.PGet(getpoint);
+							BaseP(gameObject);
+						}
+						else if (Bstatus.unitCheck == false)
+						{
+							neut = 2;
+							circle.radius = 0f;
+							BaseE(gameObject);
+						}
+					}
+				}
+			}
 		}
+		Debug.Log(BaseHP);
 	}
 
 	void BaseP(GameObject baseObj)
@@ -108,24 +189,18 @@ public class BaseStatus : MonoBehaviour {
 		Vector3 crePos = new Vector3(creX, 0f, 0f);
 		int rand = Random.Range(0, 5); //どの種類のユニット生成するかを決める
 		GameObject unitCre =
-			Instantiate(unitCreateStart.EnemyKind[rand], baseObj.transform.position + crePos, Quaternion.identity) as GameObject;
-		UnitStatus unitStatus = unitCre.GetComponent<UnitStatus>();
-		unitStatus.unitCheck = true;
+			Instantiate(unitCreateStart.PlayerKind[rand], baseObj.transform.position + crePos, Quaternion.identity) as GameObject;
 
 		float creY = 1f; //中立拠点の上下の位置に配置
 		crePos = new Vector3(0f, creY, 0f);
 		rand = Random.Range(0, 5);
 		unitCre =
-            Instantiate(unitCreateStart.EnemyKind[rand], baseObj.transform.position + crePos, Quaternion.identity) as GameObject;
-        unitStatus = unitCre.GetComponent<UnitStatus>();
-        unitStatus.unitCheck = true;
+			Instantiate(unitCreateStart.PlayerKind[rand], baseObj.transform.position + crePos, Quaternion.identity) as GameObject;
 
 		crePos = new Vector3(0f, -creY, 0f);
 		rand = Random.Range(0, 5);
 		unitCre =
-            Instantiate(unitCreateStart.EnemyKind[rand], baseObj.transform.position + crePos, Quaternion.identity) as GameObject;
-        unitStatus = unitCre.GetComponent<UnitStatus>();
-        unitStatus.unitCheck = true;
+			Instantiate(unitCreateStart.PlayerKind[rand], baseObj.transform.position + crePos, Quaternion.identity) as GameObject;
 	}
 
 	void BaseE(GameObject baseObj)
@@ -147,28 +222,84 @@ public class BaseStatus : MonoBehaviour {
         int rand = Random.Range(0, 5); //どの種類のユニット生成するかを決める
         GameObject unitCre =
             Instantiate(unitCreateStart.EnemyKind[rand], baseObj.transform.position + crePos, Quaternion.identity) as GameObject;
-        UnitStatus unitStatus = unitCre.GetComponent<UnitStatus>();
-        unitStatus.unitCheck = true;
+		enemyUnitMove unitMove = unitCre.GetComponent<enemyUnitMove>();
+		switch (BaseTag)
+        {
+            case 3:
+				unitMove.unitTag = 11;
+                break;
+            case 4:
+				unitMove.unitTag = 14;
+                break;
+            default:
+                break;
+        }
 
         float creY = 1f; //中立拠点の上下の位置に配置
         crePos = new Vector3(0f, creY, 0f);
         rand = Random.Range(0, 5);
         unitCre =
             Instantiate(unitCreateStart.EnemyKind[rand], baseObj.transform.position + crePos, Quaternion.identity) as GameObject;
-        unitStatus = unitCre.GetComponent<UnitStatus>();
-        unitStatus.unitCheck = true;
+		unitMove = unitCre.GetComponent<enemyUnitMove>();
+		switch (BaseTag)
+        {
+            case 3:
+                unitMove.unitTag = 12;
+                break;
+            case 4:
+                unitMove.unitTag = 15;
+                break;
+            default:
+                break;
+        }
 
         crePos = new Vector3(0f, -creY, 0f);
         rand = Random.Range(0, 5);
         unitCre =
             Instantiate(unitCreateStart.EnemyKind[rand], baseObj.transform.position + crePos, Quaternion.identity) as GameObject;
-        unitStatus = unitCre.GetComponent<UnitStatus>();
-        unitStatus.unitCheck = true;
+		unitMove = unitCre.GetComponent<enemyUnitMove>();
+		switch (BaseTag)
+        {
+            case 3:
+                unitMove.unitTag = 13;
+                break;
+            case 4:
+                unitMove.unitTag = 16;
+                break;
+            default:
+                break;
+        }
 	}
 
 	public void damage(int dam)
 	{
 		BaseHP -= dam;
+	}
+
+	private void OnTriggerEnter2D(Collider2D collision)
+	{
+		if (collision.gameObject.tag == "Unit")
+		{
+			UnitStatus status = collision.gameObject.GetComponent<UnitStatus>();
+			if (status != null && status.unitCheck == false)
+			{
+				enemyUnitMove unitMove = collision.gameObject.GetComponent<enemyUnitMove>();
+				unitMove.canMove = false;
+			}
+		}
+	}
+
+	private void OnTriggerExit2D(Collider2D collision)
+	{
+		if (collision.gameObject.tag == "Unit")
+        {
+            UnitStatus status = collision.gameObject.GetComponent<UnitStatus>();
+            if (status != null && status.unitCheck == false)
+            {
+                enemyUnitMove unitMove = collision.gameObject.GetComponent<enemyUnitMove>();
+                unitMove.canMove = true;
+            }
+        }
 	}
 
 }

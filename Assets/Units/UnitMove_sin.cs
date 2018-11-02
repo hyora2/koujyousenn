@@ -106,7 +106,7 @@ public class UnitMove_sin : MonoBehaviour {
 
     void Update()
     {
-      Debug.Log("index=" + indexCount);
+      //Debug.Log("index=" + indexCount);
 
         if (moving == false)
         {

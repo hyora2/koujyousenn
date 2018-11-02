@@ -30,12 +30,12 @@ public class MagicAttackMode : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 		//右ドラッグでオブジェクトの向き変更
-		Xrot = Input.GetAxis("Mouse X");
-		if (Input.GetMouseButton(1))
-        {
-			if (status.unitCheck == true)
-                verRot.Rotate(0, 0, 5f * Xrot);
-        }      
+		//Xrot = Input.GetAxis("Mouse X");
+		//if (Input.GetMouseButton(1))
+        //{
+			//if (status.unitCheck == true)
+                //verRot.Rotate(0, 0, 5f * Xrot);
+        //}      
 	}
 
 	private void FixedUpdate()
