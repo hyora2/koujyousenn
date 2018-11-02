@@ -709,7 +709,7 @@ MonoBehaviour:
   arrow: {fileID: 1383783919590674}
   rotctl: 1
   linespan: 0.1
-  speed: 5
+  speed: 2
 --- !u!114 &114310242005117910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -828,10 +828,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 11f3798acf9c94059b2b18ab97561622, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitHp: 20
-  unitPower: 10
+  unitHp: 200
+  unitPower: 25
   unitHealingpower: 0
-  unitspeed: 0.01
+  unitspeed: 0
   unitCheck: 1
   getscore: 0
 --- !u!114 &114468666516601052
