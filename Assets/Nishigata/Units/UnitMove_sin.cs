@@ -387,7 +387,7 @@ public class UnitMove_sin : MonoBehaviour {
                 Vector2 direction;
                 direction.x = linespan * (mousePosList[listcount].x - unit.transform.position.x);
                 direction.y = linespan * (mousePosList[listcount].y - unit.transform.position.y);
-               
+
                 // Debug.Log("directionx=" + direction.x+"directiony=" + direction.y);
                 // Debug.Log("mousepos=" + mousePosList[listcount]);
 
@@ -395,10 +395,15 @@ public class UnitMove_sin : MonoBehaviour {
                  direction2.x = (mousePosList[listcount].x - unit.transform.position.x);
                  direction2.y =  (mousePosList[listcount].y - unit.transform.position.y);
                  unit.GetComponent<Rigidbody2D>().velocity = direction2 * speed;*/
+                
+                var vec = ((unit.transform.position + new Vector3(direction.x , direction.y)) - unit.transform.position).normalized;
+                var angle = (Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg) - 90.0f;
+                unit.transform.rotation = Quaternion.Euler(0.0f, 0.0f, angle);
 
 
                 ui_unit.transform.position += new Vector3(direction.x * speed, direction.y * speed);
 
+                
             }
             else
             {
