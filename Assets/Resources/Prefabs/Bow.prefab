@@ -649,6 +649,7 @@ MonoBehaviour:
   Cure: 0
   a: {fileID: 1143753474601380}
   c: {fileID: 1324269665238796}
+  modeChange: {fileID: 0}
 --- !u!114 &114402032099470834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1041,6 +1042,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cbutton: {fileID: 1143753474601380}
+  modeChange: {fileID: 0}
 --- !u!114 &114879019335150370
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1108,6 +1110,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Cbutton: {fileID: 1324269665238796}
+  modeChange: {fileID: 0}
 --- !u!120 &120704232122275610
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -1534,7 +1537,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: -2.81, y: 0.08}
+  m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 648, y: 471}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224976052139882918

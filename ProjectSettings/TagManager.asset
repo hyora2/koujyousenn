@@ -3,7 +3,14 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Base
+  - Unit
+  - Undefined
+  - Bullet
+  - WizardUnit
+  - C_Mode
+  - A_Mode
   layers:
   - Default
   - TransparentFX
