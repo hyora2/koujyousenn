@@ -5,9 +5,9 @@ using UnityEngine;
 public class ChangeMode : MonoBehaviour {
     bool mode;
    
-    public GameObject Cbutton;
+    
 	public GameObject unitmenu;
-    public GameObject unit;
+   
     public GameObject drower;
     public GameObject Ui_unit;
     //private GameObject Root;
@@ -39,8 +39,10 @@ public class ChangeMode : MonoBehaviour {
     public void ButtonPushC()
     {
         //modeChange.save = true;
-        //modeChange.attacking = false;
-        unit.GetComponent<ModeSwich>().modeChange.attacking =false;
+        modeChange.attacking = false;
+
+      
+
         drower.GetComponent<UnitMove_sin>().enabled = true;
        Ui_unit.GetComponent<UnitMenu>().active = false;
         unitmenu.SetActive(false);
@@ -49,8 +51,9 @@ public class ChangeMode : MonoBehaviour {
     }
     public void ButtonPushA() {
         //modeChange.save = true;
-        //modeChange.attacking = true;
-        unit.GetComponent<ModeSwich>().modeChange.attacking = true;
+        modeChange.attacking = true;
+
+       
         drower.GetComponent<UnitMove_sin>().enabled = true;
        Ui_unit.GetComponent<UnitMenu>().active = false;
         unitmenu.SetActive(false);

@@ -2275,7 +2275,7 @@ MonoBehaviour:
   ui_unit: {fileID: 1691179163061556}
   arrow: {fileID: 1338604320028030}
   image: {fileID: 1360626891549316}
-  rotctl: 1
+  rotctl: 4
   linespan: 0.1
   speed: 5
 --- !u!114 &114985018277185488

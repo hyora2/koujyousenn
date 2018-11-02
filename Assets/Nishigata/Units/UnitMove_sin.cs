@@ -20,7 +20,7 @@ public class UnitMove_sin : MonoBehaviour {
     public bool linestraight;
 
     [HideInInspector]
-    public float deleteTime = 30f;
+    public float deleteTime = 10f;
     float linelifetime = 0f;
 
     private int indexCount;

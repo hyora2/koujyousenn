@@ -671,7 +671,7 @@ MonoBehaviour:
   ui_unit: {fileID: 1026334146772598}
   arrow: {fileID: 1579185332725550}
   image: {fileID: 1413629813638016}
-  rotctl: 1
+  rotctl: 4
   linespan: 0.1
   speed: 8
 --- !u!114 &114337251450480536
@@ -1485,7 +1485,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 2.3, y: -2.1}
   m_SizeDelta: {x: 648, y: 471}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224184522716117146

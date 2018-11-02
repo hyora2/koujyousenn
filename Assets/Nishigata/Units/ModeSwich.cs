@@ -9,7 +9,7 @@ public class ModeSwich : MonoBehaviour {
     public GameObject c;
 
 	[SerializeField]
-	public MagicModeChange modeChange;
+	private MagicModeChange modeChange;
 
 	// Use this for initialization
 	void Start () {
@@ -34,15 +34,21 @@ public class ModeSwich : MonoBehaviour {
 
 	private void FixedUpdate()
 	{
+        Debug.Log("mode.attack=" + modeChange.attacking);
 		//if (Attack == true) {
         if (modeChange.attacking == true)
         {
-            a.SetActive(true);
+            c.SetActive(true);
+            a.SetActive(false);
+
+          
         }
         //else if(Cure==true){
         else if (modeChange.attacking == false)
         {
-            c.SetActive(true);
+            a.SetActive(true);
+            c.SetActive(false);
+
         }
 	}
 

@@ -257,6 +257,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4215321264889120}
   - component: {fileID: 114255477760239118}
+  - component: {fileID: 114995238949799558}
   m_Layer: 0
   m_Name: W_Menu
   m_TagString: Untagged
@@ -679,9 +680,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05c2bea02e97c9442b9765ecdefd80e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cbutton: {fileID: 1450820456308166}
   unitmenu: {fileID: 1521088976712644}
-  unit: {fileID: 1841966312750830}
+  W_Menu: {fileID: 0}
   drower: {fileID: 1593743508108004}
   Ui_unit: {fileID: 1566102507990798}
   modeChange: {fileID: 114130590443661356}
@@ -705,7 +705,7 @@ MonoBehaviour:
   ui_unit: {fileID: 1566102507990798}
   arrow: {fileID: 1071329249103442}
   image: {fileID: 1623986177625990}
-  rotctl: 1
+  rotctl: 4
   linespan: 0.1
   speed: 5
 --- !u!114 &114215828482593558
@@ -1011,9 +1011,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 05c2bea02e97c9442b9765ecdefd80e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Cbutton: {fileID: 1330309381927450}
   unitmenu: {fileID: 1521088976712644}
-  unit: {fileID: 1841966312750830}
+  W_Menu: {fileID: 0}
   drower: {fileID: 1593743508108004}
   Ui_unit: {fileID: 1566102507990798}
   modeChange: {fileID: 114130590443661356}
@@ -1228,6 +1227,22 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: "\u56DE\u5FA9\u30E2\u30FC\u30C9"
+--- !u!114 &114995238949799558
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1680084100682100}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05c2bea02e97c9442b9765ecdefd80e9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitmenu: {fileID: 1521088976712644}
+  W_Menu: {fileID: 1680084100682100}
+  drower: {fileID: 1593743508108004}
+  Ui_unit: {fileID: 1566102507990798}
+  modeChange: {fileID: 0}
 --- !u!120 &120074500523273468
 LineRenderer:
   m_ObjectHideFlags: 1
@@ -1733,7 +1748,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: -1.72, y: -1.89}
   m_SizeDelta: {x: 648, y: 471}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224657521585583182
