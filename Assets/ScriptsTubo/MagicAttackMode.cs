@@ -32,10 +32,11 @@ public class MagicAttackMode : MonoBehaviour {
 		//右ドラッグでオブジェクトの向き変更
 		//Xrot = Input.GetAxis("Mouse X");
 		//if (Input.GetMouseButton(1))
-        //{
-			//if (status.unitCheck == true)
-                //verRot.Rotate(0, 0, 5f * Xrot);
-        //}      
+		//{
+		//if (status.unitCheck == true)
+		//verRot.Rotate(0, 0, 5f * Xrot);
+		//}
+		Debug.Log(canattack);
 	}
 
 	private void FixedUpdate()
@@ -54,7 +55,8 @@ public class MagicAttackMode : MonoBehaviour {
 
 	public void Attack ()
 	{
-		canattack = true;
+		StartCoroutine("Span");
+		//canattack = true;
 	}
 
 	IEnumerator Fire ()
@@ -71,6 +73,14 @@ public class MagicAttackMode : MonoBehaviour {
         //}
 
 		yield return new WaitForSeconds(wait);
+
+		canattack = true;
+	}
+
+	IEnumerator Span()
+	{
+
+		yield return new WaitForSeconds(1f);
 
 		canattack = true;
 	}

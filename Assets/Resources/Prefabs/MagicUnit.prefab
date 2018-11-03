@@ -66,7 +66,7 @@ GameObject:
   m_Layer: 0
   m_Name: BulletPosition
   m_TagString: Untagged
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -93,7 +93,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1744565393863612}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: 0, y: 1.78, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4400716126124834}
@@ -315,7 +315,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Bullet: {fileID: 1895858026996192, guid: 92fefc9a6aca94a959ac534c03a11ef6, type: 2}
   bulletPos: {fileID: 4124299018319862}
-  bulletSpeed: 10
+  bulletSpeed: 5
 --- !u!114 &114565291742312230
 MonoBehaviour:
   m_ObjectHideFlags: 1

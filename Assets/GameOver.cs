@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class GameOver : MonoBehaviour
 {
-    public string ReturnTitle;
     // Use this for initialization
     void Start()
     {

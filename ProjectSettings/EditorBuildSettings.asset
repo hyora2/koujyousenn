@@ -9,9 +9,6 @@ EditorBuildSettings:
     path: Assets/Title.unity
     guid: 41eb4867c8936499bb6a90e942f67058
   - enabled: 1
-    path: Assets/Main.unity
-    guid: f3fe77495ef90414a8180ee0d6cb495d
-  - enabled: 1
     path: Assets/Result.unity
     guid: 096eb4ff0ef8441d582576a6ce5b993a
   - enabled: 1
@@ -20,4 +17,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/GameOver.unity
     guid: ebdda627c8760464aa553e9abfec2b35
+  - enabled: 1
+    path: Assets/Scenetubo.unity
+    guid: dfa763e2f26b44c62bea8d1213b37827
   m_configObjects: {}
