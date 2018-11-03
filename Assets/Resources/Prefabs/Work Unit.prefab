@@ -226,6 +226,9 @@ MonoBehaviour:
   unitspeed: 0.01
   unitCheck: 1
   getscore: 0
+  Powertext: {fileID: 0}
+  slider: {fileID: 0}
+  slideractive: 1
 --- !u!114 &114165750637422360
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -331,7 +334,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 417c1b0f6264b4f3bb6dfa8885ea5c11, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7dc4d7dd200f3432388ef8ab55191ce9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
