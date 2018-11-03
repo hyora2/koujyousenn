@@ -43,6 +43,7 @@ public class UnitStatus : MonoBehaviour {
 		if (unitHp <= 0)
 		{
 			Destroy(gameObject);
+			Powertext.enabled = false;
 			if (unitCheck == false)
 			{
 				point.PGet(getscore);

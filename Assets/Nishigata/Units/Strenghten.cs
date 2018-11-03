@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Strenghten : MonoBehaviour {
     public GameObject unitmenu;
-    //public GameObject point;
+    public GameObject point;
     public GameObject unit;
     public GameObject drower;
     public GameObject Ui_unit;
@@ -22,8 +22,8 @@ public class Strenghten : MonoBehaviour {
 	}
     public void ButtonPush()
     {
-        //point = GameObject.FindWithTag("PointCount");
-        //point.GetComponent<PointCont>().Point -= UsePoint;
+        point = GameObject.FindWithTag("PointCount");
+        point.GetComponent<PointCont>().Point -= UsePoint;
         unit.GetComponent<UnitStatus>().AddPower(AddPower);
         drower.GetComponent<UnitMove_sin>().enabled = true;
         Ui_unit.GetComponent<UnitMenu>().active = false;
