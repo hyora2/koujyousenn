@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 public class FinishState : MonoBehaviour {
     public string GameOver;
-    public GameObject Font;
+    //public GameObject Font;
 
     public GameObject Pbase;    //Pbase:プレイヤー側の拠点
     public GameObject Ebase;    //Ebase:敵側の拠点
@@ -49,7 +49,7 @@ public class FinishState : MonoBehaviour {
    /// <param name="winSide">勝利チームを表す変数。0 = プレイヤー側、1 = 敵側の勝利.</param>
     public void GameEnd(int winSide){
       
-        Font.SetActive(true);   //GAME SETの文字を出す。使わなければ消してください。
+        //Font.SetActive(true);   //GAME SETの文字を出す。使わなければ消してください。
         wait(3.0f);
 
         if(winSide == 0){
