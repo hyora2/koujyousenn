@@ -140,7 +140,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4151730386620578}
-  - component: {fileID: 58211103151163308}
   - component: {fileID: 50480473717945022}
   - component: {fileID: 114335820401227374}
   - component: {fileID: 58180493411060362}
@@ -244,6 +243,7 @@ GameObject:
   - component: {fileID: 223507753743948418}
   - component: {fileID: 114403803085668984}
   - component: {fileID: 114037284704406496}
+  - component: {fileID: 58956938518397590}
   m_Layer: 5
   m_Name: Horse
   m_TagString: Unit
@@ -470,21 +470,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.5
---- !u!58 &58211103151163308
+--- !u!58 &58956938518397590
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1403217536547128}
+  m_GameObject: {fileID: 1609489755850058}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -54, y: 91}
   serializedVersion: 2
-  m_Radius: 0.8
+  m_Radius: 70
 --- !u!61 &61418927425226406
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -644,6 +644,8 @@ MonoBehaviour:
   unit: {fileID: 1403217536547128}
   drower: {fileID: 1734120369496920}
   Ui_unit: {fileID: 1536541366688958}
+  UsePoint: 20
+  AddPower: 20
 --- !u!114 &114315500945122748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -740,6 +742,9 @@ MonoBehaviour:
   unitspeed: 0
   unitCheck: 1
   getscore: 0
+  Powertext: {fileID: 0}
+  slider: {fileID: 0}
+  slideractive: 1
 --- !u!114 &114403803085668984
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -904,6 +909,8 @@ MonoBehaviour:
   unit: {fileID: 1403217536547128}
   drower: {fileID: 1734120369496920}
   Ui_unit: {fileID: 1536541366688958}
+  UsePoint: 10
+  CureHP: 50
 --- !u!114 &114644197187304816
 MonoBehaviour:
   m_ObjectHideFlags: 1
