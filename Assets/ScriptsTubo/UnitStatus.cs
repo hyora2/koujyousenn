@@ -70,11 +70,10 @@ public class UnitStatus : MonoBehaviour {
     public void AddDamage(int damage)
     {
         //Debug.Log("damege");
-        if (damage < 0)
-        {
+      
             slider.gameObject.SetActive(true);
             damageflag = true;
-        }
+        
         unitHp -= damage;
     }
     public void AddPower(int power) {
