@@ -172,21 +172,21 @@ public class BaseStatus : MonoBehaviour {
 					//中立拠点がプレイヤーもしくは敵の拠点になるかどうか判定
 					if (BaseHP <= 0 && occu == true)
 					{
-						if (Bstatus.unitCheck == true)
-						{
-							occu = false;
-							neut = 1;
-							baseManager.playerbaseCount++;
-							circle.radius = 0f;
-							point.PGet(getpoint);
-							BaseP(gameObject);
-						}
-						else if (Bstatus.unitCheck == false)
-						{
-							neut = 2;
-							circle.radius = 0f;
-							BaseE(gameObject);
-						}
+						occu = false;
+                        if (Bstatus.unitCheck == true)
+                        {
+                            neut = 1;
+                            baseManager.playerbaseCount++;
+                            circle.radius = 0f;
+                            point.PGet(getpoint);
+                            BaseP(gameObject);
+                        }
+                        else if (Bstatus.unitCheck == false)
+                        {
+                            neut = 2;
+                            circle.radius = 0f;
+                            BaseE(gameObject);
+                        }
 					}
 				}
 			}
