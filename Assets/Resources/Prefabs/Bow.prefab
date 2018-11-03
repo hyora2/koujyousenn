@@ -214,7 +214,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4891110089065296}
-  - component: {fileID: 58654438561729242}
   - component: {fileID: 50018073097236964}
   - component: {fileID: 114584326034610910}
   - component: {fileID: 114071934939472056}
@@ -371,6 +370,7 @@ GameObject:
   - component: {fileID: 223241685288825638}
   - component: {fileID: 114092766745205764}
   - component: {fileID: 114449109130824560}
+  - component: {fileID: 58820411311291070}
   m_Layer: 5
   m_Name: Bow
   m_TagString: Unit
@@ -973,21 +973,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 0.8
---- !u!58 &58654438561729242
+--- !u!58 &58820411311291070
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1217644843437592}
+  m_GameObject: {fileID: 1343843242183684}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0.3118258}
+  m_Offset: {x: 115, y: 115}
   serializedVersion: 2
-  m_Radius: 0.8247306
+  m_Radius: 75
 --- !u!61 &61554076164375960
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -1053,6 +1053,8 @@ MonoBehaviour:
   unit: {fileID: 1444123055906110}
   drower: {fileID: 1276338530867458}
   Ui_unit: {fileID: 1452966841605304}
+  UsePoint: 10
+  CureHP: 50
 --- !u!114 &114038571287683056
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1295,6 +1297,8 @@ MonoBehaviour:
   unit: {fileID: 1217644843437592}
   drower: {fileID: 1815681092723116}
   Ui_unit: {fileID: 1691179163061556}
+  UsePoint: 10
+  CureHP: 50
 --- !u!114 &114287774298634598
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1797,6 +1801,9 @@ MonoBehaviour:
   unitspeed: 0
   unitCheck: 1
   getscore: 0
+  Powertext: {fileID: 0}
+  slider: {fileID: 0}
+  slideractive: 1
 --- !u!114 &114585131007932318
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1864,6 +1871,9 @@ MonoBehaviour:
   unitspeed: 0
   unitCheck: 1
   getscore: 0
+  Powertext: {fileID: 0}
+  slider: {fileID: 0}
+  slideractive: 1
 --- !u!114 &114606187999287908
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1879,6 +1889,8 @@ MonoBehaviour:
   unit: {fileID: 1444123055906110}
   drower: {fileID: 1276338530867458}
   Ui_unit: {fileID: 1452966841605304}
+  UsePoint: 20
+  AddPower: 20
 --- !u!114 &114613741090373568
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2085,6 +2097,8 @@ MonoBehaviour:
   unit: {fileID: 1217644843437592}
   drower: {fileID: 1815681092723116}
   Ui_unit: {fileID: 1691179163061556}
+  UsePoint: 20
+  AddPower: 20
 --- !u!114 &114722087894939362
 MonoBehaviour:
   m_ObjectHideFlags: 1

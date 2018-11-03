@@ -8,6 +8,8 @@ public class Strenghten : MonoBehaviour {
     public GameObject unit;
     public GameObject drower;
     public GameObject Ui_unit;
+    public int UsePoint=20;
+    public int AddPower=20;
     // Use this for initialization
     void Start () {
         
@@ -21,8 +23,8 @@ public class Strenghten : MonoBehaviour {
     public void ButtonPush()
     {
         //point = GameObject.FindWithTag("PointCount");
-        //point.GetComponent<PointCont>().Point -= 20;
-        unit.GetComponent<UnitStatus>().unitPower += 20;
+        //point.GetComponent<PointCont>().Point -= UsePoint;
+        unit.GetComponent<UnitStatus>().AddPower(AddPower);
         drower.GetComponent<UnitMove_sin>().enabled = true;
         Ui_unit.GetComponent<UnitMenu>().active = false;
         unitmenu.SetActive(false);

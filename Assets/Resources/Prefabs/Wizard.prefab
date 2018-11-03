@@ -289,7 +289,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4479409707068878}
-  - component: {fileID: 58892980627596674}
   - component: {fileID: 50637131739308832}
   - component: {fileID: 58536647907742336}
   - component: {fileID: 120735545355750512}
@@ -501,9 +500,9 @@ CircleCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: -160, y: 81}
   serializedVersion: 2
-  m_Radius: 1.3
+  m_Radius: 70
 --- !u!58 &58536647907742336
 CircleCollider2D:
   m_ObjectHideFlags: 1
@@ -519,21 +518,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.5
---- !u!58 &58892980627596674
-CircleCollider2D:
-  m_ObjectHideFlags: 1
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1841966312750830}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  serializedVersion: 2
-  m_Radius: 0.8
 --- !u!61 &61109963328087590
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -1000,6 +984,9 @@ MonoBehaviour:
   unitspeed: 0.01
   unitCheck: 1
   getscore: 0
+  Powertext: {fileID: 0}
+  slider: {fileID: 0}
+  slideractive: 1
 --- !u!114 &114569486912518876
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1032,6 +1019,8 @@ MonoBehaviour:
   unit: {fileID: 1841966312750830}
   drower: {fileID: 1593743508108004}
   Ui_unit: {fileID: 1566102507990798}
+  UsePoint: 20
+  AddPower: 20
 --- !u!114 &114589791674679398
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1126,6 +1115,8 @@ MonoBehaviour:
   unit: {fileID: 1841966312750830}
   drower: {fileID: 1593743508108004}
   Ui_unit: {fileID: 1566102507990798}
+  UsePoint: 10
+  CureHP: 50
 --- !u!114 &114701439487091212
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1733,7 +1724,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 14.69819, y: -0.71348107}
   m_SizeDelta: {x: 648, y: 471}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!224 &224657521585583182

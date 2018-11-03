@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UnitStatus : MonoBehaviour {
 
@@ -15,7 +16,16 @@ public class UnitStatus : MonoBehaviour {
 	private Rigidbody2D rb;
 	private PointCont point;
 
+    public Text Powertext;
+  
+
     int HPMax;
+
+    public Slider slider;
+
+    bool damageflag = false;
+
+    public float slideractive=1f;
 
     // Use this for initialization
     void Start()
@@ -23,6 +33,8 @@ public class UnitStatus : MonoBehaviour {
 		rb = GetComponent<Rigidbody2D>();
 		point = GameObject.Find("GameSystem").GetComponent<PointCont>();
         HPMax = unitHp;
+
+        slider.maxValue = HPMax;
     }
 
 	// Update is called once per frame
@@ -39,5 +51,35 @@ public class UnitStatus : MonoBehaviour {
         if (unitHp>HPMax) {
             unitHp = HPMax;
         }
-	}
+
+
+        slider.value = unitHp;
+        if (damageflag == true) {
+            slideractive -= Time.deltaTime;
+        }
+        if (slideractive <= 0) {
+            damageflag = false;
+            slideractive = 1f;
+            slider.gameObject.SetActive(false);
+        }
+
+        Powertext.text = unitPower.ToString();
+
+       
+    }
+    public void AddDamage(int damage)
+    {
+        //Debug.Log("damege");
+        if (damage < 0)
+        {
+            slider.gameObject.SetActive(true);
+            damageflag = true;
+        }
+        unitHp -= damage;
+    }
+    public void AddPower(int power) {
+        unitPower += power;
+        Powertext.color =Color.blue;
+        
+    }
 }

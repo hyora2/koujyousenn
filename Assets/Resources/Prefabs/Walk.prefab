@@ -54,6 +54,7 @@ GameObject:
   - component: {fileID: 223771625810475644}
   - component: {fileID: 114061376595007548}
   - component: {fileID: 114951101411688234}
+  - component: {fileID: 58667695176613586}
   m_Layer: 5
   m_Name: Walk
   m_TagString: Unit
@@ -225,7 +226,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4252590994977584}
-  - component: {fileID: 58721845716931856}
   - component: {fileID: 50539975503990472}
   - component: {fileID: 114453713636117286}
   - component: {fileID: 114571713352620544}
@@ -470,21 +470,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.3
---- !u!58 &58721845716931856
+--- !u!58 &58667695176613586
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1717652553842242}
+  m_GameObject: {fileID: 1288991255282688}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.2495869}
+  m_Offset: {x: -55, y: 70}
   serializedVersion: 2
-  m_Radius: 0.59195364
+  m_Radius: 60
 --- !u!61 &61228853189303986
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -689,6 +689,8 @@ MonoBehaviour:
   unit: {fileID: 1717652553842242}
   drower: {fileID: 1472602557424762}
   Ui_unit: {fileID: 1026334146772598}
+  UsePoint: 10
+  CureHP: 50
 --- !u!114 &114352061894328456
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -791,6 +793,9 @@ MonoBehaviour:
   unitspeed: 0
   unitCheck: 1
   getscore: 0
+  Powertext: {fileID: 0}
+  slider: {fileID: 0}
+  slideractive: 1
 --- !u!114 &114539007317963428
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -861,6 +866,8 @@ MonoBehaviour:
   unit: {fileID: 1717652553842242}
   drower: {fileID: 1472602557424762}
   Ui_unit: {fileID: 1026334146772598}
+  UsePoint: 20
+  AddPower: 20
 --- !u!114 &114628425365046748
 MonoBehaviour:
   m_ObjectHideFlags: 1

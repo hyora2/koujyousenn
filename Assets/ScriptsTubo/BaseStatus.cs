@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BaseStatus : MonoBehaviour {
 
@@ -26,8 +27,10 @@ public class BaseStatus : MonoBehaviour {
 
 	private GameObject playerbase;
 
-	// Use this for initialization
-	void Start () {
+    public Slider slider;
+
+    // Use this for initialization
+    void Start () {
 		neut = 0;
 		occu = true;
 		baseManager = GameObject.Find("BaseManager").GetComponent<BaseManager>();
@@ -47,12 +50,15 @@ public class BaseStatus : MonoBehaviour {
 		//damageSprite.enabled = false;
 
 		playerbase = GameObject.Find("PlayerBase");
+
+        slider.maxValue = BaseHP;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+        slider.value = BaseHP;
+
+    }
 
 	private void OnCollisionEnter2D(Collision2D collision)
 	{
