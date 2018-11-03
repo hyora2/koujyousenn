@@ -31,7 +31,7 @@ public class BulCol : MonoBehaviour {
 			UnitStatus status = collision.gameObject.GetComponent<UnitStatus>();
 			if (status != null && unitStatus != null)
 			{
-				status.unitHp -= unitStatus.unitPower;
+				status.AddDamage(unitStatus.unitPower);
 				damage.enabled = true;
 				StartCoroutine("Span");
 			}

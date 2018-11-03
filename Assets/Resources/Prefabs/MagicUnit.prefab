@@ -66,7 +66,7 @@ GameObject:
   m_Layer: 0
   m_Name: BulletPosition
   m_TagString: Untagged
-  m_Icon: {fileID: 4422084297763085224, guid: 0000000000000000d000000000000000, type: 0}
+  m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -333,6 +333,9 @@ MonoBehaviour:
   unitspeed: 0.01
   unitCheck: 1
   getscore: 0
+  Powertext: {fileID: 0}
+  slider: {fileID: 0}
+  slideractive: 1
 --- !u!114 &114908451094108066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -518,7 +521,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: eb679e05f0f4d4dc0a7215943507df86, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b823903f22b9d41e8b4f6ebc184d18b9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

@@ -40,7 +40,7 @@ public class AttackRange : MonoBehaviour {
 			if (ustatus.unitCheck != unitStatus.unitCheck)
 			{
 				candamage = false;
-				attckRange.Damage(unitStatus.unitPower);
+				ustatus.AddDamage(unitStatus.unitPower);
 				StartCoroutine("Span");
 			}
         }
