@@ -36,8 +36,8 @@ public class AttackRange : MonoBehaviour {
     {
 		AttackRange attckRange = collision.gameObject.GetComponent<AttackRange>();
 		if(attckRange != null && candamage == true){
-			UnitStatus status = collision.gameObject.GetComponent<UnitStatus>();
-			if (status.unitCheck != unitStatus.unitCheck)
+			UnitStatus ustatus = collision.gameObject.GetComponent<UnitStatus>();
+			if (ustatus.unitCheck != unitStatus.unitCheck)
 			{
 				candamage = false;
 				attckRange.Damage(unitStatus.unitPower);
@@ -45,13 +45,24 @@ public class AttackRange : MonoBehaviour {
 			}
         }
 
-		if (collision.gameObject.tag == "Base" && candamage == true)
-		{
-			candamage = false;
-			BaseStatus baseStatus = collision.gameObject.GetComponent<BaseStatus>();
-			baseStatus.damage(unitStatus.unitPower);
-			StartCoroutine("Span");
-		}
+        UnitStatus status = GetComponent<UnitStatus>();
+        if (status != null)
+        {
+            if (collision.gameObject.name == "PlayerBase" && candamage == true && status.unitCheck == false)
+            {
+                candamage = false;
+                BaseStatus baseStatus = collision.gameObject.GetComponent<BaseStatus>();
+                baseStatus.damage(unitStatus.unitPower);
+                StartCoroutine("Span");
+            }
+            else if (collision.gameObject.name == "EnemyBase" && candamage == true && status.unitCheck == true)
+            {
+                candamage = false;
+                BaseStatus baseStatus = collision.gameObject.GetComponent<BaseStatus>();
+                baseStatus.damage(unitStatus.unitPower);
+                StartCoroutine("Span");
+            }
+        }
     }
 
 	private void OnTriggerExit2D(Collider2D collision)
