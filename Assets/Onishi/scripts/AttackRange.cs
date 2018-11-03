@@ -23,7 +23,7 @@ public class AttackRange : MonoBehaviour {
 		UnitStatus status = collision.gameObject.GetComponent<UnitStatus>();
 		if (status != null && unitStatus != null)
 		{
-			if (unitStatus.unitCheck == false && status.unitCheck == true)
+			if (unitStatus.unitCheck != status.unitCheck)
 			{
 				enemyUnitMove unitMove = collision.gameObject.GetComponent<enemyUnitMove>();
 				if (unitMove != null)
@@ -36,9 +36,13 @@ public class AttackRange : MonoBehaviour {
     {
 		AttackRange attckRange = collision.gameObject.GetComponent<AttackRange>();
 		if(attckRange != null && candamage == true){
-			candamage = false;
-            attckRange.Damage(unitStatus.unitPower);
-			StartCoroutine("Span");
+			UnitStatus status = collision.gameObject.GetComponent<UnitStatus>();
+			if (status.unitCheck != unitStatus.unitCheck)
+			{
+				candamage = false;
+				attckRange.Damage(unitStatus.unitPower);
+				StartCoroutine("Span");
+			}
         }
 
 		if (collision.gameObject.tag == "Base" && candamage == true)

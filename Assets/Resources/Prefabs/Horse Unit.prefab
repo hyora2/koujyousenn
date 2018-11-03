@@ -235,7 +235,7 @@ MonoBehaviour:
   unitHp: 200
   unitPower: 30
   unitHealingpower: 0
-  unitspeed: 0
+  unitspeed: 0.01
   unitCheck: 1
   getscore: 0
 --- !u!114 &114367362152765340

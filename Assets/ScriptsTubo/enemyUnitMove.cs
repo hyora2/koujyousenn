@@ -25,7 +25,7 @@ public class enemyUnitMove : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		canMove = false;
+		canMove = true;
 
 		playerBase = GameObject.Find("PlayerBase");
 		enemyBase = GameObject.Find("EnemyBase");
@@ -172,6 +172,15 @@ public class enemyUnitMove : MonoBehaviour {
 				//canMove = true;
 			}
         }
+        /*
+		else if (unitTag > 10)
+		{
+			var vec = (playerBase.transform.position - transform.position).normalized;
+            var angle = (Mathf.Atan2(vec.y, vec.x) * Mathf.Rad2Deg) - 90.0f;
+            transform.rotation = Quaternion.Euler(0f, 0f, angle);
+            canMove = true;
+		}
+		*/
 		Debug.Log("Tag" + unitTag + "," + canMove);
 	}
 

@@ -40,9 +40,9 @@ public class UnitCreateStart : MonoBehaviour {
 					MagicModeChange modeChange = Enemy[i].GetComponent<MagicModeChange>();
 					if (modeChange != null)
 					{
-						modeChange.attacking = true;
+						//modeChange.attacking = true;
 					}
-					StartCoroutine(comp(Enemy[i]));
+					//StartCoroutine(comp(Enemy[i]));
 				}
 				    
 				vy += 1.5f;

@@ -19,11 +19,11 @@ public class MagicModeChange : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		attacking = true;
+		//attacking = true;
 		save = true;
 		//modenum = 1;
-		attackMode = gameObject.GetComponent<MagicAttackMode>();
-		healMode = gameObject.GetComponent<MagicHealMode>();
+		attackMode = GetComponent<MagicAttackMode>();
+		healMode = GetComponent<MagicHealMode>();
 
 		Root = transform.root.gameObject;
         //Wmenu = Root.transform.Find("unitmenu/W_Menu").gameObject;
@@ -69,19 +69,19 @@ public class MagicModeChange : MonoBehaviour {
 		if (changenum == 1)
         {
 			//save = false;
-			//attacking = true;
+			attacking = true;
 			UnitStatus status = GetComponent<UnitStatus>();
 			if (status == null)
 			{
 				swich.Attack = false;
                 swich.Cure = true;
 			}
-            attackMode.Attack();
+			attackMode.Attack();
         }
 		else if (changenum == 2)
         {
 			//save = false;
-			//attacking = false;
+			attacking = false;
 			UnitStatus status = GetComponent<UnitStatus>();
 			if (status == null)
 			{

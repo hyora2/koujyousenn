@@ -327,7 +327,8 @@ public class BaseStatus : MonoBehaviour {
 
 		yield return new WaitForSeconds(0.5f);
 
-		damageSprite.enabled = false;
+		if (damageSprite != null)
+		    damageSprite.enabled = false;
 	}
 
 }
