@@ -36,7 +36,7 @@ public class PointCont : MonoBehaviour {
 
     public void PGet(int p){
         Point += p;
-        //Ptext.text = Point.ToString();
+        Ptext.text = Point.ToString();
 
     }
 
@@ -47,7 +47,7 @@ public class PointCont : MonoBehaviour {
         }
 
         Point -= p;
-        //Ptext.text = Point.ToString();
+        Ptext.text = Point.ToString();
     }
 
 
