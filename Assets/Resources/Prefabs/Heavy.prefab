@@ -38,7 +38,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4836952645623334}
-  - component: {fileID: 58795526855150088}
   - component: {fileID: 50773063171100000}
   - component: {fileID: 114460430100691008}
   - component: {fileID: 114390174451526926}
@@ -264,6 +263,7 @@ GameObject:
   - component: {fileID: 223258592955570772}
   - component: {fileID: 114688291351606406}
   - component: {fileID: 114131826185348182}
+  - component: {fileID: 58653567058483350}
   m_Layer: 5
   m_Name: Heavy
   m_TagString: Unit
@@ -470,21 +470,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.5
---- !u!58 &58795526855150088
+--- !u!58 &58653567058483350
 CircleCollider2D:
   m_ObjectHideFlags: 1
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1129055373635896}
+  m_GameObject: {fileID: 1587040102096686}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: -0.015592626}
+  m_Offset: {x: -55, y: 88}
   serializedVersion: 2
-  m_Radius: 0.7962349
+  m_Radius: 70
 --- !u!61 &61087240193450086
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -871,6 +871,9 @@ MonoBehaviour:
   unitspeed: 0
   unitCheck: 1
   getscore: 0
+  Powertext: {fileID: 0}
+  slider: {fileID: 0}
+  slideractive: 1
 --- !u!114 &114468666516601052
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -986,6 +989,8 @@ MonoBehaviour:
   unit: {fileID: 1129055373635896}
   drower: {fileID: 1196276029812208}
   Ui_unit: {fileID: 1369472143073510}
+  UsePoint: 20
+  AddPower: 20
 --- !u!114 &114711718226991822
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1083,6 +1088,8 @@ MonoBehaviour:
   unit: {fileID: 1129055373635896}
   drower: {fileID: 1196276029812208}
   Ui_unit: {fileID: 1369472143073510}
+  UsePoint: 10
+  CureHP: 50
 --- !u!114 &114912529176897460
 MonoBehaviour:
   m_ObjectHideFlags: 1
