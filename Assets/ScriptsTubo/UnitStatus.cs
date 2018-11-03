@@ -27,6 +27,8 @@ public class UnitStatus : MonoBehaviour {
 
     public float slideractive=1f;
 
+	private AudioSource audio;
+
     // Use this for initialization
     void Start()
     {
@@ -35,6 +37,8 @@ public class UnitStatus : MonoBehaviour {
         HPMax = unitHp;
 
         slider.maxValue = HPMax;
+
+		audio = GetComponent<AudioSource>();
     }
 
 	// Update is called once per frame
@@ -43,6 +47,7 @@ public class UnitStatus : MonoBehaviour {
 		if (unitHp <= 0)
 		{
 			Destroy(gameObject);
+			audio.Play();
 			Powertext.enabled = false;
 			if (unitCheck == false)
 			{
