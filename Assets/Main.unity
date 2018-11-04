@@ -608,7 +608,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   GameOver: Result
-  Font: {fileID: 0}
   Pbase: {fileID: 0}
   Ebase: {fileID: 0}
 --- !u!1 &1496850637
