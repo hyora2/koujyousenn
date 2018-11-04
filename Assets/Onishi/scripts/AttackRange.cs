@@ -52,13 +52,17 @@ public class AttackRange : MonoBehaviour {
         UnitStatus status = GetComponent<UnitStatus>();
         if (status != null)
         {
-            if (collision.gameObject.name == "PlayerBase" && candamage == true && status.unitCheck == false)
+            if (collision.gameObject.tag == "Base" && candamage == true && status.unitCheck == false)
             {
                 candamage = false;
                 BaseStatus baseStatus = collision.gameObject.GetComponent<BaseStatus>();
-                baseStatus.damage(unitStatus.unitPower);
-                StartCoroutine("Span");
+				if (baseStatus != null)
+				{
+					baseStatus.damage(unitStatus.unitPower);
+					StartCoroutine("Span");
+				}
             }
+            /*
             else if (collision.gameObject.name == "EnemyBase" && candamage == true && status.unitCheck == true)
             {
                 candamage = false;
@@ -66,6 +70,7 @@ public class AttackRange : MonoBehaviour {
                 baseStatus.damage(unitStatus.unitPower);
                 StartCoroutine("Span");
             }
+            */
         }
     }
 
