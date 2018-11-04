@@ -15,6 +15,8 @@ public class MagicHealMode : MonoBehaviour
 	private float waittime;
 	private UnitStatus magicUnitStatus;
 
+	private AudioSource[] audios;
+
 	// Use this for initialization
 
 	void Start () {
@@ -31,6 +33,8 @@ public class MagicHealMode : MonoBehaviour
 		circle = gameObject.GetComponent<CircleCollider2D>();
 		circle.enabled = false;
 		circle.radius = 0f; //半径の大きさを変更している理由は下記参照
+
+		audios = GetComponents<AudioSource>();
 	}
 
 	//circle.radiusについて
@@ -176,7 +180,8 @@ public class MagicHealMode : MonoBehaviour
 				//回復処理
 				UnitStatus unitStatus = healunit[i].GetComponent<UnitStatus>();
 				UnitStatus magicunitStatus = gameObject.GetComponent<UnitStatus>();
-				unitStatus.unitHp += magicunitStatus.unitHealingpower;
+				audios[1].Play();
+				unitStatus.AddDamage(-magicunitStatus.unitHealingpower);
 			}
 		}
 

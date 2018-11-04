@@ -11,6 +11,8 @@ public class MagicModeChange : MonoBehaviour {
 	private MagicHealMode healMode;
 	[SerializeField]
 	private ModeSwich swich;
+	[SerializeField]
+	private LineRenderer line;
 
 	private GameObject Root;
     private GameObject Wmenu;
@@ -76,6 +78,8 @@ public class MagicModeChange : MonoBehaviour {
 				swich.Attack = false;
                 swich.Cure = true;
 			}
+			if (line != null)
+			    line.enabled = false;
 			attackMode.Attack();
         }
 		else if (changenum == 2)
@@ -88,6 +92,8 @@ public class MagicModeChange : MonoBehaviour {
 				swich.Attack = true;
 				swich.Cure = false;
 			}
+			if (line != null)
+			    line.enabled = true;
             healMode.Heal();
         }
 		Debug.Log("name = " + gameObject.name + ", num = " + changenum);

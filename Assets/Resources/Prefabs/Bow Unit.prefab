@@ -361,7 +361,7 @@ MonoBehaviour:
   unitHealingpower: 0
   unitspeed: 0.01
   unitCheck: 1
-  getscore: 0
+  getscore: 50
   Powertext: {fileID: 0}
   slider: {fileID: 0}
   slideractive: 1

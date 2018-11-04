@@ -46,18 +46,15 @@ public class ChangeMode : MonoBehaviour {
         drower.GetComponent<UnitMove_sin>().enabled = true;
        Ui_unit.GetComponent<UnitMenu>().active = false;
         unitmenu.SetActive(false);
-		Debug.Log("Heal");
-		//modeChange.Changed(2);
+		modeChange.Changed(2);
     }
     public void ButtonPushA() {
         //modeChange.save = true;
         modeChange.attacking = true;
-
        
         drower.GetComponent<UnitMove_sin>().enabled = true;
        Ui_unit.GetComponent<UnitMenu>().active = false;
         unitmenu.SetActive(false);
-		Debug.Log("Attack");
-		//modeChange.Changed(1);
+		modeChange.Changed(1);
     }
 }
