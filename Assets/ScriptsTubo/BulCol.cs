@@ -9,6 +9,8 @@ public class BulCol : MonoBehaviour {
 	[SerializeField]
 	private float wait;
 
+	private AudioSource audio;
+
 	// Use this for initialization
 	void Start () {
 		GameObject parent = transform.root.gameObject;
@@ -16,6 +18,7 @@ public class BulCol : MonoBehaviour {
 		damage = unit.transform.Find("damage").gameObject.GetComponent<SpriteRenderer>();
 		damage.enabled = false;
 		unitStatus = unit.GetComponent<UnitStatus>();
+		audio = GetComponent<AudioSource>();
 	}
 	
 	// Update is called once per frame
@@ -31,6 +34,7 @@ public class BulCol : MonoBehaviour {
 			UnitStatus status = collision.gameObject.GetComponent<UnitStatus>();
 			if (status != null && unitStatus != null)
 			{
+				audio.Play();
 				status.AddDamage(unitStatus.unitPower);
 				damage.enabled = true;
 				StartCoroutine("Span");

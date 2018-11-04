@@ -9,6 +9,8 @@ public class AttackRange : MonoBehaviour {
 	private bool candamage;
 	private SpriteRenderer damageRenderer;
 
+	private AudioSource[] audios;
+
 	// Use this for initialization
 	void Start () {
         GetComponent<CircleCollider2D>().radius = range;
@@ -16,6 +18,8 @@ public class AttackRange : MonoBehaviour {
 		candamage = true;
 		damageRenderer = transform.Find("damage").gameObject.GetComponent<SpriteRenderer>();
         damageRenderer.enabled = false;
+
+		audios = GetComponents<AudioSource>();
 	}
     
 	private void OnTriggerEnter2D(Collider2D collision)
@@ -83,6 +87,7 @@ public class AttackRange : MonoBehaviour {
     public void Damage(int damage)
     {
 		damageRenderer.enabled = true;
+		audios[1].Play();
         unitStatus.unitHp -= damage;
 		StartCoroutine("SpanRend");
     }
